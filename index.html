@@ -3,252 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apicultura Silvestre | Mel Puro e Beneficiamento com SIF - Vilhena/RO</title>
+    <title>Apicultura Silvestre | Mel 100% Puro - Vilhena/RO (S.I.F. Nº 2710)</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // Configuração completa dos tons de cores oficiais do folheto da Apicultura Silvestre
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        honey: {
-                            50: '#fffbeb',
-                            100: '#fef3c7',
-                            200: '#fde68a',
-                            300: '#fcd34d',
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                            600: '#d97706',
-                            700: '#b45309',
-                            800: '#92400e',
-                            900: '#78350f',
+                        amber: {
+                            50: '#FFFDF0',
+                            100: '#FEF3C7',
+                            200: '#FDE68A',
+                            300: '#FDE047',
+                            400: '#FACC15',
+                            500: '#F59E0B',
+                            600: '#D97706',
+                            700: '#B45309',
+                            800: '#92400E',
+                            900: '#78350F',
+                            950: '#451A03',
                         },
-                        amberwood: '#2C1810',
-                        forest: '#1E3A2B'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        crimson: {
+                            50: '#FFF1F2',
+                            100: '#FFE4E6',
+                            200: '#FECDD3',
+                            300: '#FDA4AF',
+                            400: '#FB7185',
+                            500: '#F43F5E',
+                            600: '#E11D48',
+                            700: '#BE123C',
+                            800: '#9F1239',
+                            900: '#881337',
+                            950: '#4C0519',
+                        },
+                        forest: {
+                            50: '#F0FDF4',
+                            100: '#DCFCE7',
+                            200: '#BBF7D0',
+                            300: '#86EFAC',
+                            400: '#4ADE80',
+                            500: '#22C55E',
+                            600: '#16A34A',
+                            700: '#15803D',
+                            800: '#166534',
+                            900: '#14532D',
+                            950: '#052E16',
+                        },
+                        iperosa: {
+                            400: '#F472B6',
+                            500: '#EC4899',
+                            600: '#DB2777',
+                            700: '#BE185D',
+                            800: '#9D174D',
+                        }
                     }
                 }
             }
         }
-    </script>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        // Função global de tratamento seguro de carregamento da logomarca oficial
+        function handleLogoLoadError(img) {
+            if (img.dataset.fallbackTried) return;
+            img.dataset.fallbackTried = "true";
+            
+            const altSources = [
+                "logomarca.jpg", 
+                "logonmarca.jpg", 
+                "WhatsApp Image 2026-09-12 at 22.15.22.jpg", 
+                "WhatsApp Image 2026-09-12 at 22.15.22_2.jpg",
+                "WhatsApp Image 2026-09-12 at 22.15.22_3.jpg",
+                "api6.jpeg"
+            ];
+            
+            let currentIndex = parseInt(img.dataset.srcIndex || "0");
+            
+            if (currentIndex < altSources.length - 1) {
+                img.dataset.srcIndex = currentIndex + 1;
+                img.src = altSources[currentIndex + 1];
+                return;
+            }
+            
+            // Logomarca vetorizada de alta definição em SVG como último recurso resiliente
+            const logoSvg = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+                    <circle cx="100" cy="100" r="95" fill="#FFFDF0" stroke="#14532D" stroke-width="6"/>
+                    <circle cx="100" cy="100" r="88" fill="none" stroke="#14532D" stroke-width="1.5"/>
+                    <path id="textPath" d="M 28 100 A 72 72 0 0 1 172 100" fill="none"/>
+                    <text font-family="'Outfit', Arial, sans-serif" font-weight="900" font-size="15" fill="#14532D">
+                        <textPath href="#textPath" startOffset="50%" text-anchor="middle">APICULTURA SILVESTRE</textPath>
+                    </text>
+                    <g fill="#14532D" stroke="#14532D">
+                        <path d="M70,85 C60,75 65,55 80,50 C85,40 105,35 115,45 C125,40 140,50 135,65 C145,75 135,90 125,90 C115,95 85,95 70,85 Z"/>
+                        <path d="M96,88 L104,88 L106,112 L94,112 Z" />
+                        <path d="M100,108 Q80,118 60,116 M100,108 Q75,124 55,125 M100,108 Q120,118 140,116 M100,108 Q125,124 145,125 M100,110 L100,126" stroke-width="3" stroke-linecap="round" fill="none"/>
+                    </g>
+                    <g transform="translate(40, 102) scale(0.6)">
+                        <ellipse cx="0" cy="0" rx="10" ry="7" fill="#FACC15" stroke="#14532D" stroke-width="1.5"/>
+                        <line x1="-3" y1="-6" x2="-3" y2="6" stroke="#14532D" stroke-width="2"/>
+                        <line x1="3" y1="-6" x2="3" y2="6" stroke="#14532D" stroke-width="2"/>
+                        <ellipse cx="-8" cy="-8" rx="5" ry="8" fill="#E0F2FE" stroke="#14532D" stroke-width="1" transform="rotate(-30 -8 -8)"/>
+                    </g>
+                    <g transform="translate(160, 102) scale(0.6)">
+                        <ellipse cx="0" cy="0" rx="10" ry="7" fill="#FACC15" stroke="#14532D" stroke-width="1.5"/>
+                        <line x1="-3" y1="-6" x2="-3" y2="6" stroke="#14532D" stroke-width="2"/>
+                        <line x1="3" y1="-6" x2="3" y2="6" stroke="#14532D" stroke-width="2"/>
+                        <ellipse cx="8" cy="-8" rx="5" ry="8" fill="#E0F2FE" stroke="#14532D" stroke-width="1" transform="rotate(30 8 -8)"/>
+                    </g>
+                    <text x="100" y="150" font-family="'Outfit', Arial, sans-serif" font-weight="900" font-size="28" fill="#9F1239" text-anchor="middle">MEL</text>
+                    <text x="100" y="174" font-family="'Caveat', cursive, sans-serif" font-weight="700" font-size="18" fill="#854D0E" text-anchor="middle">Desde 2002</text>
+                </svg>
+            `);
+            
+            img.onerror = null;
+            img.src = logoSvg;
+        }
+    </script>
 
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FAFAFA;
-            color: #1F2937;
+            font-family: 'Outfit', sans-serif;
+            background-color: #FFFDF0;
         }
-        
-        /* Honeycomb Pattern Background overlay */
-        .bg-honeycomb {
-            background-color: #0F172A;
-            background-image: radial-gradient(#F59E0B 0.75px, transparent 0.75px), radial-gradient(#F59E0B 0.75px, #0F172A 0.75px);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
-            opacity: 0.98;
+        .font-handwriting {
+            font-family: 'Caveat', cursive;
         }
-
-        .amber-gradient-text {
-            background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .bg-honey-pattern {
+            background-color: #FFFDF0;
+            background-image: radial-gradient(#FDE047 0.8px, transparent 0.8px), radial-gradient(#FDE047 0.8px, #FFFDF0 0.8px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
         }
-
-        .gold-glow {
-            box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.3);
+        .bg-crimson-gradient {
+            background: linear-gradient(135deg, #881337 0%, #9F1239 50%, #4C0519 100%);
         }
-
-        .badge-sif {
-            background: linear-gradient(145deg, #065F46, #047857);
-            border: 2px solid #34D399;
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #FEF08A 0%, #FACC15 50%, #EAB308 100%);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-honey-500 selection:text-white">
+<body class="antialiased text-slate-900 selection:bg-amber-400 selection:text-slate-950">
 
-    <!-- Top Bar -->
-    <div class="bg-amberwood text-amber-100/90 text-xs py-2 px-4 border-b border-amber-900/40">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-            <div class="flex items-center gap-4">
-                <span><i class="fa-solid fa-location-dot text-honey-400 mr-1.5"></i> Rua Porto Velho, 633 - Centro, Vilhena - RO</span>
-                <span class="hidden md:inline"><i class="fa-solid fa-clock text-honey-400 mr-1.5"></i> Seg a Sex: 07:30 - 17:30</span>
-            </div>
-            <div class="flex items-center gap-4">
-                <span class="font-semibold text-emerald-400 flex items-center gap-1.5">
-                    <i class="fa-solid fa-shield-halved"></i> S.I.F. Nº 00012710 (Ministério da Agricultura)
+    <!-- Top Announcement Bar -->
+    <div class="bg-crimson-950 text-amber-100 text-xs py-2 px-4 border-b border-crimson-900">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
+            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3">
+                <span class="inline-flex items-center gap-1.5 font-extrabold text-emerald-300 bg-emerald-950 px-3 py-0.5 rounded-full border border-emerald-600/60 shadow-sm">
+                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    S.I.F. Nº 2710 • MAPA / DIPOA
                 </span>
-                <a href="tel:6933213733" class="hover:text-honey-400 transition-colors"><i class="fa-solid fa-phone mr-1"></i> (69) 3321-3733</a>
+                <span class="text-amber-200 font-medium">
+                    Entregas e Distribuição em <strong>Rondônia (RO), Acre (AC) e Mato Grosso (MT)</strong>
+                </span>
+            </div>
+            <div class="flex items-center gap-4 text-xs font-semibold">
+                <a href="tel:6933213733" class="hover:text-amber-300 transition-colors flex items-center gap-1">
+                    <i class="fa-solid fa-headset text-amber-400"></i> SAC: (69) 3321-3733
+                </a>
+                <span class="text-crimson-700">|</span>
+                <a href="https://wa.me/5569984577452" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-bold flex items-center gap-1">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> (69) 98457-7452
+                </a>
             </div>
         </div>
     </div>
 
     <!-- Main Navigation Header -->
-    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300">
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-amber-300 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Brand Logo -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <img src="api6.jpeg" alt="Logo Apicultura Silvestre" class="w-12 h-12 object-contain rounded-xl bg-white p-1 shadow-md shadow-honey-500/20 group-hover:scale-105 transition-transform border border-amber-200" onerror="this.onerror=null; this.src='https://placehold.co/100x100/f59e0b/ffffff?text=Mel';">
-                    <div>
-                        <span class="text-xl font-extrabold tracking-tight text-slate-900 block leading-tight">APICULTURA <span class="text-honey-600">SILVESTRE</span></span>
-                        <span class="text-[10px] uppercase font-bold tracking-widest text-slate-500 block">Mel & Beneficiamento • Vilhena-RO</span>
+            <div class="flex items-center justify-between h-24 gap-4">
+                
+                <!-- Official Brand Logo (Sistema Duplo: Leitura Local + SVG NATIVO para Preview Instantâneo) -->
+                <a href="#" class="flex items-center gap-3 shrink-0 group">
+                    <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-amber-50 border-2 border-amber-500 p-0.5 shadow-md group-hover:scale-105 transition-transform overflow-hidden shrink-0">
+                        <!-- 1. Imagem física no seu computador -->
+                        <img src="logomarca.jpg" 
+                             alt="Logomarca Oficial Apicultura Silvestre" 
+                             class="w-full h-full object-cover rounded-full absolute inset-0 z-10 transition-opacity duration-300"
+                             onerror="this.style.opacity='0'; this.style.pointerEvents='none';">
+                        
+                        <!-- 2. Vetor SVG NATIVO idêntico para exibição imediata na pré-visualização -->
+                        <svg class="w-full h-full rounded-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="92" r="86" fill="#FFFDF0" stroke="#14532D" stroke-width="6"/>
+                            <circle cx="100" cy="92" r="79" fill="none" stroke="#14532D" stroke-width="1.5"/>
+                            <path id="headerLogoTextPath" d="M 28 92 A 72 72 0 0 1 172 92" fill="none"/>
+                            <text font-family="'Outfit', Arial, sans-serif" font-weight="900" font-size="14.5" fill="#14532D" letter-spacing="0.5">
+                                <textPath href="#headerLogoTextPath" startOffset="50%" text-anchor="middle">APICULTURA SILVESTRE</textPath>
+                            </text>
+                            <!-- Árvore do Ipê -->
+                            <g fill="#14532D" stroke="#14532D">
+                                <path d="M70,78 C60,68 65,48 80,43 C85,33 105,28 115,38 C125,33 140,43 135,58 C145,68 135,83 125,83 C115,88 85,88 70,78 Z"/>
+                                <path d="M96,81 L104,81 L106,105 L94,105 Z" />
+                                <path d="M100,101 Q80,111 60,109 M100,101 Q75,117 55,118 M100,101 Q120,111 140,109 M100,101 Q125,117 145,118 M100,103 L100,119" stroke-width="3" stroke-linecap="round" fill="none"/>
+                            </g>
+                            <!-- Abelhinha Esquerda -->
+                            <g transform="translate(42, 94) scale(0.65)">
+                                <ellipse cx="0" cy="0" rx="10" ry="7" fill="#FACC15" stroke="#14532D" stroke-width="1.5"/>
+                                <line x1="-3" y1="-6" x2="-3" y2="6" stroke="#14532D" stroke-width="2"/>
+                                <line x1="3" y1="-6" x2="3" y2="6" stroke="#14532D" stroke-width="2"/>
+                                <ellipse cx="-7" cy="-8" rx="5" ry="8" fill="#E0F2FE" stroke="#14532D" stroke-width="1" transform="rotate(-30 -7 -8)"/>
+                            </g>
+                            <!-- Abelhinha Direita -->
+                            <g transform="translate(158, 94) scale(0.65)">
+                                <ellipse cx="0" cy="0" rx="10" ry="7" fill="#FACC15" stroke="#14532D" stroke-width="1.5"/>
+                                <line x1="-3" y1="-6" x2="-3" y2="6" stroke="#14532D" stroke-width="2"/>
+                                <line x1="3" y1="-6" x2="3" y2="6" stroke="#14532D" stroke-width="2"/>
+                                <ellipse cx="7" cy="-8" rx="5" ry="8" fill="#E0F2FE" stroke="#14532D" stroke-width="1" transform="rotate(30 7 -8)"/>
+                            </g>
+                            <!-- Texto MEL em Vermelho -->
+                            <text x="100" y="142" font-family="Georgia, 'Times New Roman', serif" font-weight="900" font-size="28" fill="#9F1239" text-anchor="middle">MEL</text>
+                            <!-- Texto Cursivo Desde 2002 -->
+                            <text x="100" y="172" font-family="'Caveat', cursive, sans-serif" font-weight="700" font-size="20" fill="#14532D" text-anchor="middle">Desde 2002</text>
+                        </svg>
+                    </div>
+                    
+                    <div class="flex flex-col justify-center">
+                        <div class="flex items-center gap-2">
+                            <span class="text-lg sm:text-2xl font-black text-forest-900 tracking-tight leading-none uppercase font-heading">
+                                APICULTURA <span class="text-amber-600">SILVESTRE</span>
+                            </span>
+                            <span class="hidden sm:inline-block px-2 py-0.5 rounded bg-crimson-800 text-white text-[10px] font-black uppercase tracking-wider">
+                                Desde 2002
+                            </span>
+                        </div>
+                        <span class="font-handwriting text-crimson-800 font-bold text-sm sm:text-base leading-snug mt-0.5">
+                            Presente nos momentos mais doces da sua vida ♡
+                        </span>
+                        <span class="text-[10px] font-extrabold text-emerald-800 uppercase tracking-wider block">
+                            Vilhena / RO • Reg. S.I.F. Nº 2710
+                        </span>
                     </div>
                 </a>
 
-                <!-- Desktop Links -->
-                <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-700">
-                    <a href="#inicio" class="hover:text-honey-600 transition-colors">Início</a>
-                    <a href="#sobre" class="hover:text-honey-600 transition-colors">Sobre Nós</a>
-                    <a href="#servicos" class="hover:text-honey-600 transition-colors">Serviços & Interposto</a>
-                    <a href="#produtos" class="hover:text-honey-600 transition-colors">Produtos</a>
-                    <a href="#diferenciais" class="hover:text-honey-600 transition-colors">Diferenciais</a>
-                    <a href="#depoimentos" class="hover:text-honey-600 transition-colors">Avaliações</a>
-                    <a href="#localizacao" class="hover:text-honey-600 transition-colors">Contato</a>
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-6 text-sm font-bold text-slate-800">
+                    <a href="#inicio" class="hover:text-amber-600 transition-colors">Início</a>
+                    <a href="#quem-somos" class="hover:text-amber-600 transition-colors">Quem Somos</a>
+                    <a href="#diferenciais" class="hover:text-amber-600 transition-colors">Diferenciais</a>
+                    <a href="#tabela-valores" class="hover:text-amber-600 transition-colors text-crimson-800 font-extrabold flex items-center gap-1">
+                        <i class="fa-solid fa-tags text-amber-500"></i> Proposta Comercial
+                    </a>
+                    <a href="#condicoes" class="hover:text-amber-600 transition-colors">Condições</a>
+                    <a href="#catalogo" class="hover:text-amber-600 transition-colors">Produtos</a>
+                    <a href="#contato" class="hover:text-amber-600 transition-colors">Contato</a>
                 </nav>
 
-                <!-- Action Button -->
-                <div class="hidden sm:flex items-center gap-3">
-                    <a href="https://wa.me/5569984577452?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20os%20produtos%20e%20servi%C3%A7os%20da%20Apicultura%20Silvestre." 
+                <!-- Header CTA Button -->
+                <div class="hidden sm:flex items-center gap-3 shrink-0">
+                    <a href="https://wa.me/5569984577452?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Apicultura%20Silvestre%20e%20gostaria%20de%20fazer%20um%20pedido." 
                        target="_blank"
-                       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold shadow-md shadow-emerald-600/20 hover:shadow-lg transition-all duration-200 active:scale-95">
-                        <i class="fa-brands fa-whatsapp text-lg"></i>
-                        <span>Falar no WhatsApp</span>
+                       class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs uppercase tracking-wide shadow-md hover:scale-105 transition-all border border-emerald-500">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                        <span>Pedido no WhatsApp</span>
                     </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="menu-toggle" class="lg:hidden text-slate-700 hover:text-honey-600 p-2 focus:outline-none" aria-label="Abrir Menu">
-                    <i class="fa-solid fa-bars text-2xl"></i>
+                <button id="menu-toggle" class="lg:hidden text-slate-800 hover:text-amber-600 p-2 rounded-xl bg-amber-100 border border-amber-300" aria-label="Abrir Menu">
+                    <i class="fa-solid fa-bars-staggered text-xl"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Drawer -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-100 px-6 py-5 space-y-4">
-            <a href="#inicio" class="block text-slate-800 font-medium hover:text-honey-600">Início</a>
-            <a href="#sobre" class="block text-slate-800 font-medium hover:text-honey-600">Sobre Nós</a>
-            <a href="#servicos" class="block text-slate-800 font-medium hover:text-honey-600">Serviços & Interposto</a>
-            <a href="#produtos" class="block text-slate-800 font-medium hover:text-honey-600">Produtos</a>
-            <a href="#diferenciais" class="block text-slate-800 font-medium hover:text-honey-600">Diferenciais</a>
-            <a href="#depoimentos" class="block text-slate-800 font-medium hover:text-honey-600">Avaliações</a>
-            <a href="#localizacao" class="block text-slate-800 font-medium hover:text-honey-600">Contato & Endereço</a>
-            <a href="https://wa.me/5569984577452?text=Ol%C3%A1!%20Gostaria%20de%20atendimento." target="_blank" class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 text-white font-semibold">
-                <i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-amber-300 px-6 py-5 space-y-3 shadow-xl">
+            <a href="#inicio" class="block font-bold text-slate-800 hover:text-amber-600">Início</a>
+            <a href="#quem-somos" class="block font-bold text-slate-800 hover:text-amber-600">Quem Somos</a>
+            <a href="#diferenciais" class="block font-bold text-slate-800 hover:text-amber-600">Diferenciais</a>
+            <a href="#tabela-valores" class="block font-black text-crimson-800">Proposta Comercial de Valores</a>
+            <a href="#condicoes" class="block font-bold text-slate-800 hover:text-amber-600">Condições Comerciais</a>
+            <a href="#catalogo" class="block font-bold text-slate-800 hover:text-amber-600">Linha de Produtos</a>
+            <a href="#contato" class="block font-bold text-slate-800 hover:text-amber-600">Contato & Localização</a>
+            <a href="https://wa.me/5569984577452" target="_blank" class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 text-white font-black shadow-md">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Falar no WhatsApp Vendas
             </a>
         </div>
     </header>
 
-    <!-- SECTION 1: HERO -->
-    <section id="inicio" class="relative bg-honeycomb text-white pt-16 pb-24 md:pt-24 md:pb-32 overflow-hidden">
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative bg-honey-pattern py-10 md:py-14 border-b border-amber-300/80 overflow-hidden">
+        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
                 
-                <!-- Text Content -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold tracking-wide uppercase">
-                        <i class="fa-solid fa-award text-amber-400"></i> Registro S.I.F. Nº 00012710 • Vilhena / RO
+                <!-- Left Column Text Content -->
+                <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+                    
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-200/80 border border-amber-400 text-amber-950 font-bold text-xs shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-crimson-600 animate-pulse"></span>
+                        <span class="font-handwriting text-lg text-crimson-900 leading-none">Presente nos momentos mais doces da sua vida ♡</span>
                     </div>
-                    
-                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15]">
-                        Mel de Origem Silvestre <br class="hidden sm:block"/>
-                        <span class="amber-gradient-text">Puro, Analisado e Certificado.</span>
-                    </h1>
-                    
-                    <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                        Referência em beneficiamento, análise de qualidade, envasamento e distribuição de mel em Rondônia. Atendemos atacado, varejo e parceiros comerciais com padrão rigoroso do Ministério da Agricultura.
-                    </p>
 
-                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <a href="https://wa.me/5569984577452?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido%20ou%20or%C3%A7amento%20de%20mel." target="_blank" 
-                           class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold text-base shadow-xl shadow-emerald-900/40 hover:scale-[1.02] transition-all flex items-center justify-center gap-3">
-                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <!-- Main Red Banner matching flyer style -->
+                    <div class="bg-crimson-gradient p-6 sm:p-8 rounded-3xl text-white shadow-2xl border-4 border-amber-400 relative overflow-hidden">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <span class="px-3 py-1 rounded bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider shadow">
+                                Desde 2002 • Vilhena / RO
+                            </span>
+                            <span class="px-3 py-1 rounded bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                S.I.F. Nº 2710
+                            </span>
+                        </div>
+
+                        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-none uppercase">
+                            APICULTURA <br/>
+                            <span class="text-amber-300 drop-shadow-md">SILVESTRE</span>
+                        </h1>
+
+                        <p class="mt-4 text-amber-100 text-sm sm:text-base font-medium leading-relaxed">
+                            Mel de abelha 100% puro extraído da florada silvestre amazônica e nativas de Ipê, inspecionado sob registro oficial do Ministério da Agricultura (S.I.F. Nº 2710). Atendendo supermercados, comércios e distribuidores em <strong>Rondônia, Acre e Mato Grosso</strong>.
+                        </p>
+                    </div>
+
+                    <!-- 3 Quick Highlights -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                        <div class="p-3 rounded-2xl bg-white border-2 border-amber-300 shadow-sm flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-forest-900 text-amber-300 flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-xs font-black text-slate-900 leading-tight">Mel 100% Puro</p>
+                                <p class="text-[10px] text-slate-500">Sem adição de açúcar</p>
+                            </div>
+                        </div>
+
+                        <div class="p-3 rounded-2xl bg-white border-2 border-amber-300 shadow-sm flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-forest-900 text-amber-300 flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-xs font-black text-slate-900 leading-tight">Inspecionado MAPA</p>
+                                <p class="text-[10px] text-slate-500">S.I.F. Nº 2710</p>
+                            </div>
+                        </div>
+
+                        <div class="p-3 rounded-2xl bg-white border-2 border-amber-300 shadow-sm flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-forest-900 text-amber-300 flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-xs font-black text-slate-900 leading-tight">+20 Anos Tradição</p>
+                                <p class="text-[10px] text-slate-500">Atacado & Varejo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="pt-2 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                        <a href="https://wa.me/5569984577452?text=Ol%C3%A1!%20Gostaria%20de%20receber%20a%20tabela%20comercial%20e%20fazer%20um%20pedido%20de%20mel." 
+                           target="_blank" 
+                           class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-base shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-3 border-2 border-emerald-400">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
                             <span>Fazer Pedido no WhatsApp</span>
                         </a>
 
-                        <a href="#produtos" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-slate-200 font-semibold text-base transition-all flex items-center justify-center gap-2">
-                            <span>Ver Produtos & Opções</span>
-                            <i class="fa-solid fa-arrow-down text-xs"></i>
+                        <a href="#tabela-valores" 
+                           class="w-full sm:w-auto px-6 py-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-base shadow-lg transition-all flex items-center justify-center gap-2 border-2 border-amber-600">
+                            <i class="fa-solid fa-table-list text-slate-900"></i>
+                            <span>Ver Proposta de Valores</span>
                         </a>
-                    </div>
-
-                    <!-- Trust indicators badge row -->
-                    <div class="pt-6 border-t border-slate-800 grid grid-cols-3 gap-4 text-center sm:text-left">
-                        <div>
-                            <p class="text-2xl font-extrabold text-amber-400">100%</p>
-                            <p class="text-xs text-slate-400">Mel Silvestre Natural</p>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-extrabold text-amber-400">S.I.F.</p>
-                            <p class="text-xs text-slate-400">Inspeção Federal Ativa</p>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-extrabold text-amber-400">RO / BR</p>
-                            <p class="text-xs text-slate-400">Atendimento e Entrega</p>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Visual Card Showcase -->
+                <!-- Right Column Image Display (Potes de Mel e Ipê Rosa em Flor) -->
                 <div class="lg:col-span-5 relative">
-                    <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <!-- Glow effect backdrop -->
-                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-honey-500 to-amber-600 opacity-30 blur-xl"></div>
-                        
-                        <div class="relative rounded-3xl bg-slate-900/90 border border-slate-800 p-6 shadow-2xl backdrop-blur-md">
-                            <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
-                                <div class="flex items-center gap-3">
-                                    <img src="api7.jpeg" alt="Selo S.I.F. 2710" class="w-10 h-10 object-contain rounded-lg bg-amber-500/20 p-1">
-                                    <div>
-                                        <h3 class="font-bold text-white text-sm">Entreposto Certificado</h3>
-                                        <p class="text-xs text-slate-400">S.I.F. Nº 00012710</p>
-                                    </div>
-                                </div>
-                                <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-semibold rounded-full">
-                                    Aprovado MAPA
+                    <div class="relative z-10 max-w-md mx-auto">
+                        <div class="rounded-3xl bg-gradient-to-b from-amber-100 via-white to-amber-200 p-3 sm:p-4 shadow-2xl border-4 border-amber-400 relative overflow-hidden">
+                            
+                            <div class="flex items-center justify-between mb-2.5 px-1">
+                                <span class="text-xs font-black uppercase text-amber-950 bg-amber-300 px-3 py-1 rounded-full border border-amber-400 flex items-center gap-1.5">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-iperosa-500 inline-block"></span> Flora Silvestre & Ipê Rosa
+                                </span>
+                                <span class="text-[10px] font-extrabold text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-full border border-emerald-300">
+                                    S.I.F. 2710
                                 </span>
                             </div>
 
-                            <!-- Real Image Showcase -->
-                            <div class="rounded-2xl border border-amber-900/30 overflow-hidden mb-6 relative group">
-                                <img src="api1.jpeg" alt="Lote de Mel Apicultura Silvestre 280g e 500g" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                                <div class="absolute bottom-3 left-3 right-3 text-left">
-                                    <span class="inline-flex items-center gap-1.5 text-[11px] font-bold text-amber-300 bg-slate-900/90 px-2.5 py-1 rounded-md border border-amber-500/30">
-                                        <i class="fa-solid fa-bottle-droplet text-amber-400"></i> Bisnagas de 280g e 500g
-                                    </span>
-                                    <p class="text-xs text-slate-300 mt-1 drop-shadow">Fotos reais da nossa linha oficial de produção</p>
+                            <div class="relative rounded-2xl overflow-hidden border-2 border-amber-300 shadow-inner group">
+                                <img src="WhatsApp Image 2026-09-12 at 22.19.49.jpg" 
+                                     alt="Linha completa de produtos Apicultura Silvestre e Ipê Rosa em flor" 
+                                     class="w-full h-auto max-h-[420px] object-cover hover:scale-105 transition-transform duration-700"
+                                     onerror="this.onerror=null; this.src='api1.jpeg';">
+                                
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                                
+                                <div class="absolute bottom-3 left-3 right-3 text-white flex items-end justify-between">
+                                    <div>
+                                        <p class="text-xs font-extrabold text-amber-300 uppercase">Linha Completa de Mel</p>
+                                        <p class="text-sm font-black text-white leading-tight">Bisnagas, Potes & Sachês</p>
+                                    </div>
+                                    <div class="w-12 h-12 rounded-full bg-white p-0.5 border-2 border-amber-400 shadow shrink-0 flex items-center justify-center">
+                                        <img src="api7.jpeg" alt="Selo SIF" class="w-full h-full rounded-full object-cover">
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="space-y-3">
-                                <div class="flex items-center gap-3 text-sm text-slate-300">
-                                    <i class="fa-solid fa-circle-check text-emerald-400"></i>
-                                    <span>Controle de Umidade e Purificação</span>
+                            <div class="mt-3 bg-amber-50 p-2.5 rounded-xl border border-amber-300 flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-box-open text-amber-700 text-base"></i>
+                                    <span class="text-xs font-bold text-amber-950">De 55g a 1kg em Caixas</span>
                                 </div>
-                                <div class="flex items-center gap-3 text-sm text-slate-300">
-                                    <i class="fa-solid fa-circle-check text-emerald-400"></i>
-                                    <span>Rotulagem Oficial com Selo S.I.F. Nº 2710</span>
-                                </div>
-                                <div class="flex items-center gap-3 text-sm text-slate-300">
-                                    <i class="fa-solid fa-circle-check text-emerald-400"></i>
-                                    <span>Pronto para Distribuição em Supermercados</span>
-                                </div>
+                                <span class="text-[11px] font-black text-crimson-800 bg-amber-200 px-2 py-0.5 rounded">Atacado RO, AC e MT</span>
                             </div>
 
-                            <a href="#servicos" class="mt-6 w-full block text-center py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 font-medium text-xs transition-colors">
-                                Conhecer processo de beneficiamento &rarr;
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -257,76 +425,81 @@
         </div>
     </section>
 
-    <!-- SECTION 2: SOBRE NÓS -->
-    <section id="sobre" class="py-20 bg-white">
+    <!-- QUEM SOMOS -->
+    <section id="quem-somos" class="py-16 bg-white border-b border-amber-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
                 
-                <div class="lg:col-span-6 space-y-6">
-                    <div class="inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider">
-                        Tradição & Qualidade em Rondônia
+                <div class="lg:col-span-6 space-y-5">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-tree text-forest-800"></i> Sobre A Apicultura Silvestre
                     </div>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                        Compromisso com a Saúde e o Desenvolvimento da Apicultura
+                    
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight uppercase">
+                        QUEM SOMOS
                     </h2>
-                    <p class="text-slate-600 leading-relaxed text-base">
-                        A <strong class="text-slate-900">Apicultura Silvestre</strong> é uma empresa atuante como Entreposto de Mel sediada em Vilhena, Rondônia. Atuamos fortemente na prestação de serviços de análise de qualidade, envasamento e comércio de mel de altíssimo padrão.
-                    </p>
-                    <p class="text-slate-600 leading-relaxed text-base">
-                        Atendemos pessoas de bom gosto e preocupadas com a sua saúde, com pessoal qualificado e equipes especializadas, contribuindo para o aprimoramento do setor e do comércio de mel no município de Vilhena - RO e regiões adjacentes.
+
+                    <div class="p-6 rounded-2xl bg-amber-50 border-l-4 border-amber-500 shadow-sm space-y-3">
+                        <p class="text-slate-800 text-base sm:text-lg leading-relaxed font-semibold">
+                            "Há mais de 20 anos atuando no mercado de mel de abelha puro, a <strong class="text-forest-900">Apicultura Silvestre</strong> trabalha com compromisso, qualidade e tradição, levando produtos inspecionados e de confiança para <strong class="text-crimson-800">Rondônia, Acre e Mato Grosso</strong>."
+                        </p>
+                    </div>
+
+                    <p class="text-slate-700 text-sm leading-relaxed">
+                        Nossa empresa atua no setor de entreposto de mel com estrutura completa para análise físico-química de qualidade, beneficiamento e envasamento higiênico. Atendemos consumidores de bom gosto e estabelecimentos comerciais preocupados com a saúde e a garantia de origem pura.
                     </p>
 
-                    <!-- Mission / Vision / Values Cards Grid -->
-                    <div class="grid sm:grid-cols-3 gap-4 pt-4">
-                        <div class="p-4 rounded-xl bg-amber-50/60 border border-amber-100">
-                            <i class="fa-solid fa-bullseye text-honey-600 text-xl mb-2"></i>
-                            <h4 class="font-bold text-slate-900 text-sm">Missão</h4>
-                            <p class="text-xs text-slate-600 mt-1">Prestação de serviços de entreposto, análise, envasamento e comércio de mel de alta qualidade.</p>
-                        </div>
-                        <div class="p-4 rounded-xl bg-amber-50/60 border border-amber-100">
-                            <i class="fa-solid fa-eye text-honey-600 text-xl mb-2"></i>
-                            <h4 class="font-bold text-slate-900 text-sm">Visão</h4>
-                            <p class="text-xs text-slate-600 mt-1">Visando crescimento contínuo com ética e comprometimento com a saúde do consumidor.</p>
-                        </div>
-                        <div class="p-4 rounded-xl bg-amber-50/60 border border-amber-100">
-                            <i class="fa-solid fa-heart text-honey-600 text-xl mb-2"></i>
-                            <h4 class="font-bold text-slate-900 text-sm">Valores</h4>
-                            <p class="text-xs text-slate-600 mt-1">Honestidade em todas as ações, Ética profissional e Qualidade nos serviços.</p>
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Estados Atendidos com Distribuição Própria:</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 rounded-xl bg-amber-100 text-amber-950 font-bold text-xs flex items-center gap-2 border border-amber-300">
+                                <i class="fa-solid fa-location-dot text-amber-600"></i> Rondônia (RO)
+                            </span>
+                            <span class="px-4 py-2 rounded-xl bg-amber-100 text-amber-950 font-bold text-xs flex items-center gap-2 border border-amber-300">
+                                <i class="fa-solid fa-location-dot text-amber-600"></i> Acre (AC)
+                            </span>
+                            <span class="px-4 py-2 rounded-xl bg-amber-100 text-amber-950 font-bold text-xs flex items-center gap-2 border border-amber-300">
+                                <i class="fa-solid fa-location-dot text-amber-600"></i> Mato Grosso (MT)
+                            </span>
                         </div>
                     </div>
 
                     <div class="pt-2">
-                        <a href="https://wa.me/5569984577452?text=Gostaria%20de%20saber%20mais%20sobre%20a%20hist%C3%B3ria%20e%20produtos%20da%20Apicultura%20Silvestre." 
+                        <a href="https://wa.me/5569984577452?text=Gostaria%20de%20saber%20mais%20sobre%20a%20Apicultura%20Silvestre%20e%20seus%20produtos." 
                            target="_blank"
-                           class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm transition-all">
-                            <span>Falar com Nossa Equipe</span>
-                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                           class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-forest-900 hover:bg-forest-800 text-white font-bold text-sm transition-all shadow-md">
+                            <span>Falar com Nossa Equipe Comercial</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Right Highlights Visual & Real Facade Photo -->
-                <div class="lg:col-span-6 space-y-6">
-                    <!-- Sede Real Image -->
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group">
-                        <img src="api2.jpeg" alt="Sede da Apicultura Silvestre em Vilhena RO" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-                        <div class="absolute bottom-4 left-4 right-4 text-white">
-                            <span class="bg-amber-500 text-slate-950 text-[10px] font-black uppercase px-2.5 py-1 rounded-md mb-1 inline-block">Sede Própria em Vilhena - RO</span>
-                            <p class="text-sm font-bold text-white">Rua Porto Velho, 633 - Centro</p>
-                            <p class="text-xs text-slate-300">Estrutura física completa para recebimento e envasamento</p>
+                <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+                    <div class="rounded-2xl overflow-hidden shadow-lg border-2 border-amber-300 relative group h-52">
+                        <img src="api2.jpeg" alt="Sede da Apicultura Silvestre em Vilhena RO" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-3">
+                            <span class="text-xs font-bold text-white">Sede Própria em Vilhena/RO</span>
                         </div>
                     </div>
 
-                    <!-- Framed Mission Card Image -->
-                    <div class="relative rounded-3xl bg-slate-900 text-white p-6 overflow-hidden shadow-xl flex items-center gap-6">
-                        <img src="api4.jpeg" alt="Quadro Oficial de Missão, Visão e Valores" class="w-32 h-32 object-cover rounded-2xl border border-amber-500/30 flex-shrink-0">
-                        <div>
-                            <span class="text-xs uppercase tracking-widest text-honey-400 font-bold block">Quadro Institucional</span>
-                            <h3 class="text-lg font-bold text-white">Missão, Visão e Valores</h3>
-                            <p class="text-xs text-slate-300 mt-1 leading-relaxed">
-                                Nossos pilares fundamentais expostos na recepção da empresa, refletindo nosso compromisso com a comunidade de Vilhena.
-                            </p>
+                    <div class="rounded-2xl overflow-hidden shadow-lg border-2 border-amber-300 relative group h-52">
+                        <img src="api4.jpeg" alt="Quadro Institucional Missão Visão Valores" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-3">
+                            <span class="text-xs font-bold text-white">Missão, Visão e Valores</span>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl overflow-hidden shadow-lg border-2 border-amber-300 relative group h-52">
+                        <img src="api3.jpeg" alt="Caixas de Bisnagas Prontas para Envio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-3">
+                            <span class="text-xs font-bold text-white">Caixas Seladas Pronta Entrega</span>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl overflow-hidden shadow-lg border-2 border-amber-300 relative group h-52">
+                        <img src="api5.jpeg" alt="Embalagem Oficial Apicultura Silvestre" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-3">
+                            <span class="text-xs font-bold text-white">Embalagens Personalizadas</span>
                         </div>
                     </div>
                 </div>
@@ -335,285 +508,470 @@
         </div>
     </section>
 
-    <!-- SECTION 2: SOBRE NÓS -->
-    <section id="sobre" class="py-20 bg-white">
+    <!-- DIFERENCIAIS (Réplica Exata do Folheto Original) -->
+    <section id="diferenciais" class="py-16 bg-honey-pattern border-b border-amber-300/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-forest-50 text-forest-900 border border-forest-600/30 text-xs font-bold uppercase tracking-wider mb-2">
+                    <svg class="w-4 h-4 text-forest-700" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    Padrão Superior de Qualidade
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 uppercase">
+                    NOSSOS DIFERENCIAIS
+                </h2>
+                <p class="text-slate-700 text-sm mt-2 font-medium">
+                    Os 5 pilares de excelência que tornam o Mel da Apicultura Silvestre a escolha preferida de famílias e comerciantes.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
                 
-                <div class="lg:col-span-6 space-y-6">
-                    <div class="inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider">
-                        Tradição & Qualidade em Rondônia
+                <!-- Diferencial 1 -->
+                <div class="bg-amber-50/90 rounded-2xl p-6 shadow-md border-2 border-amber-300 hover:border-forest-700 hover:shadow-xl transition-all text-center flex flex-col items-center justify-between group">
+                    <div class="w-16 h-16 rounded-full bg-forest-900 text-amber-300 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-all shadow-md shrink-0">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
                     </div>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                        Compromisso com a Saúde e o Desenvolvimento da Apicultura
-                    </h2>
-                    <p class="text-slate-600 leading-relaxed text-base">
-                        A <strong class="text-slate-900">Apicultura Silvestre</strong> é uma empresa atuante como Entreposto de Mel sediada em Vilhena, Rondônia. Atuamos fortemente na prestação de serviços de análise de qualidade, envasamento e comércio de mel de altíssimo padrão.
-                    </p>
-                    <p class="text-slate-600 leading-relaxed text-base">
-                        Atendemos famílias, comércios, revendedores e parceiros preocupados com a saúde e a procedência do alimento. Nossa equipe altamente qualificada contribui ativamente para o aprimoramento contínuo do setor apícola de Vilhena e regiões adjacentes.
-                    </p>
-
-                    <!-- Mission / Vision / Values Cards Grid -->
-                    <div class="grid sm:grid-cols-3 gap-4 pt-4">
-                        <div class="p-4 rounded-xl bg-amber-50/60 border border-amber-100">
-                            <i class="fa-solid fa-bullseye text-honey-600 text-xl mb-2"></i>
-                            <h4 class="font-bold text-slate-900 text-sm">Missão</h4>
-                            <p class="text-xs text-slate-600 mt-1">Beneficiar mel com rigor sanitized, entregando saúde e sabor autêntico.</p>
-                        </div>
-                        <div class="p-4 rounded-xl bg-amber-50/60 border border-amber-100">
-                            <i class="fa-solid fa-eye text-honey-600 text-xl mb-2"></i>
-                            <h4 class="font-bold text-slate-900 text-sm">Visão</h4>
-                            <p class="text-xs text-slate-600 mt-1">Ser a principal referência em interposto apícola de Rondônia com transparência.</p>
-                        </div>
-                        <div class="p-4 rounded-xl bg-amber-50/60 border border-amber-100">
-                            <i class="fa-solid fa-heart text-honey-600 text-xl mb-2"></i>
-                            <h4 class="font-bold text-slate-900 text-sm">Valores</h4>
-                            <p class="text-xs text-slate-600 mt-1">Honestidade em todas as ações, Ética profissional e Qualidade técnica.</p>
-                        </div>
-                    </div>
-
-                    <div class="pt-2">
-                        <a href="https://wa.me/5569984577452?text=Gostaria%20de%20saber%20mais%20sobre%20a%20hist%C3%B3ria%20e%20produtos%20da%20Apicultura%20Silvestre." 
-                           target="_blank"
-                           class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm transition-all">
-                            <span>Falar com Nossa Equipe</span>
-                            <i class="fa-solid fa-chevron-right text-xs"></i>
-                        </a>
+                    <div>
+                        <h3 class="text-sm font-black text-slate-900 mb-2 leading-tight uppercase">MEL PURO SEM ADIÇÃO DE AÇÚCAR</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            Mel 100% natural obtido da flora silvestre e nativas rondonienses, sem adição de glicose ou açúcares.
+                        </p>
                     </div>
                 </div>
 
-                <!-- Right Highlights Box -->
-                <div class="lg:col-span-6">
-                    <div class="relative rounded-3xl bg-slate-900 text-white p-8 overflow-hidden shadow-2xl">
-                        <div class="absolute -top-12 -right-12 w-48 h-48 bg-honey-500/20 rounded-full blur-3xl"></div>
+                <!-- Diferencial 2 -->
+                <div class="bg-amber-50/90 rounded-2xl p-6 shadow-md border-2 border-amber-300 hover:border-forest-700 hover:shadow-xl transition-all text-center flex flex-col items-center justify-between group">
+                    <div class="w-16 h-16 rounded-full bg-forest-900 text-amber-300 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-all shadow-md shrink-0">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 0117.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001A11.954 11.954 0 0110 1.944zm3.707 6.764a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-black text-slate-900 mb-2 leading-tight uppercase">PRODUTO INSPECCIONADO E SEGURO</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            Cadastrado e auditado no Ministério da Agricultura / DIPOA sob o selo oficial <strong>S.I.F. Nº 2710</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Diferencial 3 -->
+                <div class="bg-amber-50/90 rounded-2xl p-6 shadow-md border-2 border-amber-300 hover:border-forest-700 hover:shadow-xl transition-all text-center flex flex-col items-center justify-between group">
+                    <div class="w-16 h-16 rounded-full bg-forest-900 text-amber-300 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-all shadow-md shrink-0">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l8.66 5v10L12 22l-8.66-5V7L12 2z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-black text-slate-900 mb-2 leading-tight uppercase">RICO EM NUTRIENTES NATURAIS</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            Preserva as enzimas vivas, vitaminas, minerais e antioxidantes terapêuticos das flores de Ipê e da mata.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Diferencial 4 -->
+                <div class="bg-amber-50/90 rounded-2xl p-6 shadow-md border-2 border-amber-300 hover:border-forest-700 hover:shadow-xl transition-all text-center flex flex-col items-center justify-between group">
+                    <div class="w-16 h-16 rounded-full bg-forest-900 text-amber-300 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-all shadow-md shrink-0">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-black text-slate-900 mb-2 leading-tight uppercase">TRADIÇÃO E QUALIDADE HÁ +20 ANOS</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            Atuando com compromisso ético e responsabilidade sanitária ininterrupta no mercado desde 2002.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Diferencial 5 -->
+                <div class="bg-amber-50/90 rounded-2xl p-6 shadow-md border-2 border-amber-300 hover:border-forest-700 hover:shadow-xl transition-all text-center flex flex-col items-center justify-between group sm:col-span-2 md:col-span-1">
+                    <div class="w-16 h-16 rounded-full bg-forest-900 text-amber-300 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-all shadow-md shrink-0">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 2a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V4a2 2 0 00-2-2H5zm0 2h10v2H5V4zm0 4h10v10H5V8z" clip-rule="evenodd"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-black text-slate-900 mb-2 leading-tight uppercase">DIVERSIDADE DE EMBALAGENS</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            Bisnagas dosadoras de 250g, 280g, 500g, 1kg, potes tradicionais e sachês cartelados de 55g e 1kg.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPOSTA COMERCIAL E VALORES (Tabela Completa do Folheto) -->
+    <section id="tabela-valores" class="py-16 bg-white border-b border-amber-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="bg-crimson-gradient rounded-3xl p-6 sm:p-8 text-white text-center shadow-xl mb-10 border-4 border-amber-400 relative overflow-hidden">
+                <span class="px-4 py-1 rounded-full bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider mb-2 inline-block shadow">
+                    Tabela Oficial para Revenda & Atacado
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-black tracking-tight uppercase">
+                    PROPOSTA COMERCIAL DE VALORES
+                </h2>
+                <p class="text-amber-100 text-xs sm:text-sm mt-2 max-w-2xl mx-auto font-medium">
+                    Consulte os preços unitários por embalagem e valores promocionais por caixa lacrada para o seu estabelecimento.
+                </p>
+            </div>
+
+            <div class="overflow-x-auto rounded-2xl border-2 border-amber-300 shadow-xl bg-white mb-6">
+                <table class="w-full text-left border-collapse min-w-[700px]">
+                    <thead>
+                        <tr class="bg-crimson-900 text-amber-200 text-xs uppercase font-extrabold tracking-wider border-b-2 border-amber-400">
+                            <th class="py-4 px-6">Produto</th>
+                            <th class="py-4 px-4">Embalagem por Caixa</th>
+                            <th class="py-4 px-4 text-center">Valor Unitário</th>
+                            <th class="py-4 px-6 text-right">Valor por Caixa</th>
+                            <th class="py-4 px-4 text-center">Simular Pedido</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-amber-200 text-sm">
                         
-                        <div class="relative z-10 space-y-6">
-                            <div class="flex items-center gap-4 border-b border-slate-800 pb-6">
-                                <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-600 to-honey-400 flex items-center justify-center text-white font-black text-2xl shadow-lg">
-                                    SIF
-                                </div>
-                                <div>
-                                    <span class="text-xs uppercase tracking-widest text-honey-400 font-bold block">Inspeção Federal</span>
-                                    <h3 class="text-xl font-bold text-white">S.I.F. Nº 00012710</h3>
-                                    <p class="text-xs text-slate-400">Cadastrado no Ministério da Agricultura</p>
-                                </div>
-                            </div>
+                        <!-- Item 1 -->
+                        <tr class="hover:bg-amber-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-bottle-droplet text-amber-600 text-base"></i> Mel Silvestre Bisnaga 1kg
+                            </td>
+                            <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 12 unidades</td>
+                            <td class="py-4 px-4 text-center font-black text-slate-800">R$ 40,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 480,00</td>
+                            <td class="py-4 px-4 text-center">
+                                <button onclick="addToOrder('Mel Silvestre Bisnaga 1kg', 480)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
+                                    + Adicionar Caixa
+                                </button>
+                            </td>
+                        </tr>
 
-                            <h4 class="text-lg font-semibold text-amber-200">Garantia de Origem e Segurança Alimentar</h4>
-                            
-                            <ul class="space-y-4 text-sm text-slate-300">
-                                <li class="flex items-start gap-3">
-                                    <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs flex-shrink-0 mt-0.5"><i class="fa-solid fa-check"></i></span>
-                                    <span><strong>Análises Laboratoriais:</strong> Verificação contínua da pureza, sacarose e ausência de adulterantes.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs flex-shrink-0 mt-0.5"><i class="fa-solid fa-check"></i></span>
-                                    <span><strong>Origem Silvestre da Amazônia:</strong> Florada nativa da região de Rondônia, rica em aroma e nutrientes.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs flex-shrink-0 mt-0.5"><i class="fa-solid fa-check"></i></span>
-                                    <span><strong>Envasamento Higienizado:</strong> Maquinário adequado e padrões de biossegurança de alta precisão.</span>
-                                </li>
-                            </ul>
+                        <!-- Item 2 -->
+                        <tr class="hover:bg-amber-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-jar text-amber-600 text-base"></i> Mel Silvestre Pote 1kg
+                            </td>
+                            <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 12 unidades</td>
+                            <td class="py-4 px-4 text-center font-black text-slate-800">R$ 40,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 480,00</td>
+                            <td class="py-4 px-4 text-center">
+                                <button onclick="addToOrder('Mel Silvestre Pote 1kg', 480)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
+                                    + Adicionar Caixa
+                                </button>
+                            </td>
+                        </tr>
 
-                            <div class="pt-4 bg-slate-800/60 rounded-2xl p-4 border border-slate-700/60 flex items-center justify-between">
-                                <div>
-                                    <p class="text-xs text-slate-400">Dúvidas sobre laudos e certificação?</p>
-                                    <p class="text-xs font-bold text-white">Entre em contato direto com nosso SAC</p>
-                                </div>
-                                <a href="tel:6933213733" class="px-3 py-1.5 rounded-lg bg-honey-500 text-slate-950 font-bold text-xs hover:bg-honey-400 transition-colors">
-                                    (69) 3321-3733
-                                </a>
-                            </div>
-                        </div>
+                        <!-- Item 3 -->
+                        <tr class="hover:bg-amber-50 transition-colors bg-amber-50/40">
+                            <td class="py-4 px-6 font-bold text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-bottle-droplet text-amber-600 text-base"></i> Mel Silvestre Bisnaga 500g
+                            </td>
+                            <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 24 unidades</td>
+                            <td class="py-4 px-4 text-center font-black text-slate-800">R$ 23,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 552,00</td>
+                            <td class="py-4 px-4 text-center">
+                                <button onclick="addToOrder('Mel Silvestre Bisnaga 500g', 552)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
+                                    + Adicionar Caixa
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Item 4 -->
+                        <tr class="hover:bg-amber-50 transition-colors bg-amber-50/40">
+                            <td class="py-4 px-6 font-bold text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-jar text-amber-600 text-base"></i> Mel Silvestre Pote 500g
+                            </td>
+                            <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 24 unidades</td>
+                            <td class="py-4 px-4 text-center font-black text-slate-800">R$ 23,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 552,00</td>
+                            <td class="py-4 px-4 text-center">
+                                <button onclick="addToOrder('Mel Silvestre Pote 500g', 552)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
+                                    + Adicionar Caixa
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Item 5 -->
+                        <tr class="hover:bg-amber-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-bottle-droplet text-amber-600 text-base"></i> Mel Silvestre Bisnaga 280g
+                            </td>
+                            <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 36 unidades</td>
+                            <td class="py-4 px-4 text-center font-black text-slate-800">R$ 16,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 576,00</td>
+                            <td class="py-4 px-4 text-center">
+                                <button onclick="addToOrder('Mel Silvestre Bisnaga 280g', 576)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
+                                    + Adicionar Caixa
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Item 6 -->
+                        <tr class="hover:bg-amber-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-jar text-amber-600 text-base"></i> Mel Silvestre Pote 290g
+                            </td>
+                            <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 36 unidades</td>
+                            <td class="py-4 px-4 text-center font-black text-slate-800">R$ 16,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 576,00</td>
+                            <td class="py-4 px-4 text-center">
+                                <button onclick="addToOrder('Mel Silvestre Pote 290g', 576)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
+                                    + Adicionar Caixa
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Item 7 -->
+                        <tr class="hover:bg-amber-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-bottle-droplet text-amber-600 text-base"></i> Mel Silvestre Bisnaga 250g
+                            </td>
+                            <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 40 unidades</td>
+                            <td class="py-4 px-4 text-center font-black text-slate-800">R$ 15,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 600,00</td>
+                            <td class="py-4 px-4 text-center">
+                                <button onclick="addToOrder('Mel Silvestre Bisnaga 250g', 600)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
+                                    + Adicionar Caixa
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Item 8 -->
+                        <tr class="hover:bg-amber-50 transition-colors bg-amber-50/40">
+                            <td class="py-4 px-6 font-bold text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-box text-amber-600 text-base"></i> Sachê Mel 55g (cartelado)
+                            </td>
+                            <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 150 unidades</td>
+                            <td class="py-4 px-4 text-center font-black text-slate-800">R$ 3,70</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 555,00</td>
+                            <td class="py-4 px-4 text-center">
+                                <button onclick="addToOrder('Sachê Mel 55g (cartelado)', 555)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
+                                    + Adicionar Caixa
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Item 9 -->
+                        <tr class="hover:bg-amber-50 transition-colors bg-amber-50/40">
+                            <td class="py-4 px-6 font-bold text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-bag-shopping text-amber-600 text-base"></i> Sachê 1kg
+                            </td>
+                            <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 10 unidades</td>
+                            <td class="py-4 px-4 text-center font-black text-slate-800">R$ 60,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 600,00</td>
+                            <td class="py-4 px-4 text-center">
+                                <button onclick="addToOrder('Sachê 1kg', 600)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
+                                    + Adicionar Caixa
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="text-right text-xs italic text-slate-500 mb-8">* Valores sujeitos a alteração sem aviso prévio.</p>
+
+            <!-- Order Calculator Box -->
+            <div id="calculadora-pedidos" class="rounded-3xl bg-slate-900 text-white p-6 sm:p-8 shadow-2xl border-4 border-amber-400">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-4 mb-6">
+                    <div>
+                        <span class="px-3 py-1 rounded-md bg-emerald-600 text-white text-[11px] font-black uppercase tracking-wider">Simulador de Pedido por Caixas</span>
+                        <h3 class="text-xl sm:text-2xl font-bold text-amber-300 mt-1">Monte o seu Pedido para Envio</h3>
+                    </div>
+                    <div class="text-xs bg-slate-800 px-4 py-2 rounded-xl text-amber-200 border border-slate-700">
+                        <i class="fa-solid fa-circle-info text-amber-400 mr-1"></i> Pedido Mínimo: <strong>03 Caixas</strong>
                     </div>
                 </div>
 
+                <div id="order-items-list" class="space-y-3 mb-6 min-h-[60px] text-sm text-slate-300">
+                    <p class="text-xs text-slate-400 italic">Nenhuma caixa selecionada ainda. Clique no botão "+ Adicionar Caixa" em qualquer linha da tabela acima.</p>
+                </div>
+
+                <div class="bg-slate-800/90 rounded-2xl p-4 border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <p class="text-xs text-slate-400 uppercase font-semibold">Total Estimado do Pedido:</p>
+                        <p id="total-boxes-count" class="text-xs font-semibold text-amber-300">0 Caixas selecionadas</p>
+                        <p id="total-price-value" class="text-2xl sm:text-3xl font-black text-white">R$ 0,00</p>
+                    </div>
+
+                    <div class="flex items-center gap-3 w-full sm:w-auto">
+                        <button onclick="clearOrder()" class="px-4 py-3.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-slate-300 font-bold text-xs transition-colors">
+                            Limpar
+                        </button>
+                        <button onclick="sendOrderToWhatsApp()" class="w-full sm:w-auto px-6 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/60 border border-emerald-400 transition-all hover:scale-105">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>Enviar Cotação pelo WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
 
-    <!-- SECTION 3: SERVIÇOS & INTERPOSTO -->
-    <section id="servicos" class="py-20 bg-slate-50 border-y border-slate-200/60">
+    <!-- CONDIÇÕES COMERCIAIS -->
+    <section id="condicoes" class="py-16 bg-honey-pattern border-b border-amber-300/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-                <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider">Nossas Soluções</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Serviços Apícolas Especializados</h2>
-                <p class="text-slate-600 text-base">Atuamos em todas as etapas de recebimento, teste de qualidade, envasamento e comercialização com padrões sanitários rigorosos.</p>
+            
+            <div class="bg-crimson-gradient rounded-3xl p-6 text-white text-center shadow-lg border-2 border-amber-400 mb-10">
+                <h2 class="text-2xl sm:text-3xl font-black uppercase tracking-tight">
+                    CONDIÇÕES COMERCIAIS
+                </h2>
+                <p class="text-amber-100 text-xs mt-1 font-medium">Transparência e pontualidade na entrega para o seu comércio</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
-                <!-- Card 1 -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 hover:shadow-xl hover:border-amber-300 transition-all group">
-                    <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all">
-                        <i class="fa-solid fa-building-wheat"></i>
+                <!-- Card 1: Pedido Mínimo -->
+                <div class="bg-white rounded-2xl p-6 shadow-md border-2 border-amber-300 text-center flex flex-col items-center justify-between">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-100 text-crimson-800 flex items-center justify-center text-3xl mb-4 border border-amber-300 shadow-sm">
+                        <svg class="w-8 h-8 text-amber-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                        </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Entreposto de Mel</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Estrutura preparada para recepção, armazenagem e triagem do mel de produtores parceiros com segurança sanitária.
-                    </p>
-                    <a href="https://wa.me/5569984577452?text=Tenho%20interesse%20no%20servi%C3%A7o%20de%20Entreposto%20de%20Mel." target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-honey-700 hover:text-honey-900">
-                        <span>Consultar recepção</span> &rarr;
-                    </a>
+                    <div>
+                        <p class="text-[11px] font-black uppercase text-slate-500 tracking-wider">PEDIDO MÍNIMO</p>
+                        <h3 class="text-2xl font-black text-crimson-900 mt-1">03 CAIXAS</h3>
+                        <p class="text-slate-600 text-xs mt-2">Pode ser mesclado entre diferentes tipos de produtos e potes.</p>
+                    </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 hover:shadow-xl hover:border-amber-300 transition-all group">
-                    <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all">
-                        <i class="fa-solid fa-vial-circle-check"></i>
+                <!-- Card 2: Formas de Pagamento -->
+                <div class="bg-white rounded-2xl p-6 shadow-md border-2 border-amber-300 text-center flex flex-col items-center justify-between">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-100 text-crimson-800 flex items-center justify-center text-3xl mb-4 border border-amber-300 shadow-sm">
+                        <svg class="w-8 h-8 text-amber-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Análise de Qualidade</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Aferição de índices físico-químicos para atestar mel 100% puro, livre de contaminações ou adição de açúcares.
-                    </p>
-                    <a href="https://wa.me/5569984577452?text=Gostaria%20de%20detalhes%20sobre%20as%20an%C3%A1lises%20de%20qualidade%20do%20mel." target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-honey-700 hover:text-honey-900">
-                        <span>Saiba como funciona</span> &rarr;
-                    </a>
+                    <div>
+                        <p class="text-[11px] font-black uppercase text-slate-500 tracking-wider">FORMAS DE PAGAMENTO</p>
+                        <h3 class="text-lg font-black text-slate-900 mt-1">PIX OU BOLETO</h3>
+                        <span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-900 font-extrabold text-xs rounded-full mt-2 border border-emerald-300">
+                            Faturamento para 20 Dias
+                        </span>
+                    </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 hover:shadow-xl hover:border-amber-300 transition-all group">
-                    <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all">
-                        <i class="fa-solid fa-box-open"></i>
+                <!-- Card 3: Proteção no Transporte / Embalagens Reforçadas (Com Ícone SVG 3D Nativo) -->
+                <div class="bg-white rounded-2xl p-6 shadow-md border-2 border-amber-300 text-center flex flex-col items-center justify-between">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center mb-4 border border-amber-300 shadow-sm">
+                        <svg class="w-9 h-9 text-amber-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v1a2 2 0 01-2 2M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+                        </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Envasamento Especial</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Processo padronizado em embalagens dosadoras de alta qualidade (bisnagas e frascos), prontas para o consumidor.
-                    </p>
-                    <a href="https://wa.me/5569984577452?text=Quero%20informa%C3%A7%C3%B5es%20sobre%20o%20envasamento%20e%20embalagens." target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-honey-700 hover:text-honey-900">
-                        <span>Ver formatos</span> &rarr;
-                    </a>
+                    <div>
+                        <p class="text-[11px] font-black uppercase text-slate-500 tracking-wider">PROTEÇÃO NO TRANSPORTE</p>
+                        <h3 class="text-base font-black text-slate-900 mt-1 uppercase">EMBALAGENS REFORÇADAS</h3>
+                        <p class="text-slate-600 text-xs mt-2">Produtos enviados em caixas sob medida para evitar movimentação e avarias.</p>
+                    </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 hover:shadow-xl hover:border-amber-300 transition-all group">
-                    <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all">
-                        <i class="fa-solid fa-truck-ramp-box"></i>
+                <!-- Card 4: Cobertura Logística -->
+                <div class="bg-white rounded-2xl p-6 shadow-md border-2 border-amber-300 text-center flex flex-col items-center justify-between">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-100 text-crimson-800 flex items-center justify-center text-3xl mb-4 border border-amber-300 shadow-sm">
+                        <svg class="w-8 h-8 text-amber-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1e1 1 0 011-1h2l4 4v5a1 1 0 01-1 1h-1m-4 0h-2"/>
+                        </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Comércio & Atacado</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Fornecimento continuo para mercados, empórios, farmácias e clientes corporativos de Vilhena e Rondônia.
-                    </p>
-                    <a href="https://wa.me/5569984577452?text=Quero%20revender%20o%20mel%20da%20Apicultura%20Silvestre%20no%20meu%20estabelecimento." target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-honey-700 hover:text-honey-900">
-                        <span>Orçamento Atacado</span> &rarr;
-                    </a>
+                    <div>
+                        <p class="text-[11px] font-black uppercase text-slate-500 tracking-wider">ENTREGAMOS EM</p>
+                        <h3 class="text-xl font-black text-forest-900 mt-1">RO, AC e MT</h3>
+                        <p class="text-slate-600 text-xs mt-2">Logística ágil e programada para comércios e supermercados.</p>
+                    </div>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- SECTION 4: CATÁLOGO DE PRODUTOS -->
-    <section id="produtos" class="py-20 bg-white">
+    <!-- CATÁLOGO DE PRODUTOS -->
+    <section id="catalogo" class="py-16 bg-white border-b border-amber-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-                <div>
-                    <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">Direto da Fonte</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-2">Nossas Apresentações de Mel</h2>
-                    <p class="text-slate-600 text-sm mt-1">Produtos prontos para entrega imediata em Vilhena e envio regional.</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <a href="https://wa.me/5569984577452?text=Quero%20a%20tabela%20de%20pre%C3%A7os%20completa%20dos%20produtos." target="_blank" class="inline-flex items-center gap-2 text-sm font-bold text-emerald-700 hover:text-emerald-800 bg-emerald-50 px-4 py-2 rounded-xl border border-emerald-200">
-                        <i class="fa-solid fa-file-invoice-dollar"></i> Solicitada Tabela Completa via WhatsApp
-                    </a>
-                </div>
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider">Apresentações Oficiais</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1 uppercase">
+                    NOSSAS LINHAS DE MEL DE ABELHA
+                </h2>
+                <p class="text-slate-600 text-sm mt-2">
+                    Embalagens higienizadas, dosadoras e lacradas para consumo diário e alta rotatividade comercial.
+                </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Product 1 -->
-                <div class="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+                
+                <div class="bg-white rounded-3xl border-2 border-amber-300 overflow-hidden shadow-md hover:shadow-xl transition-all flex flex-col justify-between">
                     <div>
-                        <div class="relative h-60 overflow-hidden group">
-                            <img src="api1.jpeg" alt="Mel Silvestre Bisnaga 280g" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-4 right-4 bg-amber-500 text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full shadow-md">Bisnaga 280g</span>
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-                            <div class="absolute bottom-3 left-3 text-white">
-                                <span class="text-xs font-bold bg-amber-600 px-2 py-0.5 rounded">S.I.F. 2710</span>
-                            </div>
+                        <div class="relative h-64 overflow-hidden group bg-amber-50">
+                            <img src="api1.jpeg" alt="Mel Silvestre em Bisnagas Dosadoras" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-amber-500 text-slate-950 text-xs font-black uppercase px-3 py-1 rounded-full shadow">
+                                Bisnagas 250g, 280g, 500g, 1kg
+                            </span>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-slate-900 mb-2">Mel Silvestre 280g</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                                Bisnaga prática para o dia a dia. Bico dosador anti-pingo com tampa de alta vedação amarela oficial.
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Bisnagas Dosadoras</h3>
+                            <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                                Bico anti-pingo de fácil manuseio com tampa amarela oficial. Praticidade total para famílias e restaurantes.
                             </p>
-                            <ul class="text-xs text-slate-500 space-y-2 mb-6">
-                                <li><i class="fa-solid fa-check text-honey-600 mr-1.5"></i> Mel 100% puro e inspecionado</li>
-                                <li><i class="fa-solid fa-check text-honey-600 mr-1.5"></i> Formato ergonômico 280g</li>
+                            <ul class="text-xs text-slate-700 space-y-1.5 mb-4">
+                                <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Mel 100% Puro da florada silvestre</li>
+                                <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Rótulo com selo oficial S.I.F. Nº 2710</li>
                             </ul>
                         </div>
                     </div>
                     <div class="p-6 pt-0">
-                        <a href="https://wa.me/5569984577452?text=Gostaria%20de%20comprar%20o%20Mel%20Silvestre%20de%20280g." 
-                           target="_blank"
-                           class="w-full py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-sm text-center block transition-colors shadow-md shadow-amber-600/20">
-                            Pedir Bisnaga 280g
+                        <a href="https://wa.me/5569984577452?text=Gostaria%20de%20cotar%20caixas%20de%20bisnagas%20de%20mel." target="_blank" class="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs text-center block transition-colors shadow uppercase">
+                            Cotar Bisnagas no WhatsApp
                         </a>
                     </div>
                 </div>
 
-                <!-- Product 2 -->
-                <div class="rounded-3xl border-2 border-honey-400 bg-white overflow-hidden shadow-md hover:shadow-xl transition-all flex flex-col justify-between relative">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 z-10 bg-honey-500 text-slate-950 font-black text-[10px] uppercase px-4 py-1 rounded-b-lg tracking-wider">
-                        Mais Vendido
-                    </div>
+                <div class="bg-white rounded-3xl border-2 border-amber-400 overflow-hidden shadow-xl transition-all flex flex-col justify-between relative">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 bg-crimson-800 text-white font-black text-[10px] uppercase px-4 py-1 rounded-b-lg shadow z-10">
+                        Campeão de Vendas
+                    </span>
                     <div>
-                        <div class="relative h-60 overflow-hidden group">
-                            <img src="api1.jpeg" alt="Mel Silvestre Frasco 500g" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-4 right-4 bg-emerald-600 text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full shadow-md">Família 500g</span>
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-                            <div class="absolute bottom-3 left-3 text-white">
-                                <span class="text-xs font-bold bg-amber-600 px-2 py-0.5 rounded">S.I.F. 2710</span>
-                            </div>
+                        <div class="relative h-64 overflow-hidden group bg-amber-50">
+                            <img src="WhatsApp Image 2026-09-12 at 22.19.49.jpg" alt="Mel Silvestre em Potes Tradicionais" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='api1.jpeg';">
+                            <span class="absolute top-4 right-4 bg-forest-900 text-white text-xs font-black uppercase px-3 py-1 rounded-full shadow">
+                                Potes 290g, 500g, 1kg
+                            </span>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-slate-900 mb-2">Mel Silvestre 500g</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                                Apresentação oficial de 500g. Excelente custo-benefício para famílias e uso gastronômico diário.
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Potes Tradicionais</h3>
+                            <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                                Frascos de alta resistência com fecho inviolável. Formato consagrado no mercado de consumo familiar.
                             </p>
-                            <ul class="text-xs text-slate-500 space-y-2 mb-6">
-                                <li><i class="fa-solid fa-check text-honey-600 mr-1.5"></i> Embalagem tradicional 500g</li>
-                                <li><i class="fa-solid fa-check text-honey-600 mr-1.5"></i> Rico em compostos florais silvestres</li>
+                            <ul class="text-xs text-slate-700 space-y-1.5 mb-4">
+                                <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Opções de 290g, 500g e 1.000g (1kg)</li>
+                                <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Excelente margem de lucro para revenda</li>
                             </ul>
                         </div>
                     </div>
                     <div class="p-6 pt-0">
-                        <a href="https://wa.me/5569984577452?text=Gostaria%20de%20comprar%20o%20Mel%20Silvestre%20de%20500g." 
-                           target="_blank"
-                           class="w-full py-3 rounded-xl bg-honey-600 hover:bg-honey-700 text-white font-bold text-sm text-center block transition-colors shadow-lg shadow-honey-600/30">
-                            Pedir Frasco 500g
+                        <a href="https://wa.me/5569984577452?text=Gostaria%20de%20cotar%20caixas%20de%20potes%20de%20mel." target="_blank" class="w-full py-3.5 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-black text-xs text-center block transition-colors shadow-lg uppercase">
+                            Cotar Potes no WhatsApp
                         </a>
                     </div>
                 </div>
 
-                <!-- Product 3 -->
-                <div class="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+                <div class="bg-white rounded-3xl border-2 border-amber-300 overflow-hidden shadow-md hover:shadow-xl transition-all flex flex-col justify-between">
                     <div>
-                        <div class="relative h-60 overflow-hidden group">
-                            <img src="api3.jpeg" alt="Caixas para Revenda e Distribuição de Mel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-4 right-4 bg-slate-800 text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full shadow-md">Atacado & B2B</span>
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-                            <div class="absolute bottom-3 left-3 text-white">
-                                <span class="text-xs font-bold bg-emerald-600 px-2 py-0.5 rounded">Pronta Entrega</span>
-                            </div>
+                        <div class="relative h-64 overflow-hidden group bg-amber-50">
+                            <img src="api3.jpeg" alt="Sachês de Mel Apicultura Silvestre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-slate-900 text-white text-xs font-black uppercase px-3 py-1 rounded-full shadow">
+                                Sachês 55g & 1kg
+                            </span>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-slate-900 mb-2">Caixas para Revenda</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                                Caixas de transporte personalizadas e lacradas para mercados, empórios, farmácias e distribuidores.
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Sachês & Atacado</h3>
+                            <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                                Sachês de 55g cartelados (150 un/cx) e sachês de 1kg (10 un/cx). Ideal para padarias, lanchonetes e merendas.
                             </p>
-                            <ul class="text-xs text-slate-500 space-y-2 mb-6">
-                                <li><i class="fa-solid fa-check text-honey-600 mr-1.5"></i> Embalagens institucionais (Caixa Apicultura)</li>
-                                <li><i class="fa-solid fa-check text-honey-600 mr-1.5"></i> Código EAN e nota fiscal completa</li>
+                            <ul class="text-xs text-slate-700 space-y-1.5 mb-4">
+                                <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Sachê 55g cartelado em caixa c/ 150 un</li>
+                                <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Sachê 1kg em caixa c/ 10 un</li>
                             </ul>
                         </div>
                     </div>
                     <div class="p-6 pt-0">
-                        <a href="https://wa.me/5569984577452?text=Quero%20cotar%20caixas%20de%20mel%20para%20revenda%20comercial." 
-                           target="_blank"
-                           class="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm text-center block transition-colors shadow-md">
-                            Cotar para Comércios
+                        <a href="https://wa.me/5569984577452?text=Gostaria%20de%20cotar%20caixas%20de%20sach%C3%AAs%20de%20mel." target="_blank" class="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-black text-xs text-center block transition-colors shadow uppercase">
+                            Cotar Sachês no WhatsApp
                         </a>
                     </div>
                 </div>
@@ -622,234 +980,200 @@
         </div>
     </section>
 
-    <!-- GALERIA REAL DE FOTOS DA EMPRESA -->
-    <section class="py-16 bg-slate-100 border-t border-slate-200">
+    <!-- DEPOIMENTOS GOOGLE -->
+    <section class="py-16 bg-honey-pattern border-b border-amber-300/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-10">
-                <span class="px-3 py-1 rounded-full bg-amber-200 text-amber-900 text-xs font-bold uppercase tracking-wider">Transparência & Estrutura</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">Conheça Nossas Instalações e Produtos Reais</h2>
-                <p class="text-xs text-slate-600 mt-1">Imagens diretas da nossa sede e produção em Vilhena - RO</p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="relative rounded-2xl overflow-hidden shadow-md group h-48 bg-slate-800">
-                    <img src="api2.jpeg" alt="Fachada Apicultura Silvestre" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-3">
-                        <span class="text-xs font-bold text-white">Fachada em Vilhena</span>
-                    </div>
-                </div>
-                <div class="relative rounded-2xl overflow-hidden shadow-md group h-48 bg-slate-800">
-                    <img src="api1.jpeg" alt="Frascos de Mel 280g e 500g" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-3">
-                        <span class="text-xs font-bold text-white">Lote Envasado</span>
-                    </div>
-                </div>
-                <div class="relative rounded-2xl overflow-hidden shadow-md group h-48 bg-slate-800">
-                    <img src="api3.jpeg" alt="Caixa com Frascos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-3">
-                        <span class="text-xs font-bold text-white">Pronto para Envio</span>
-                    </div>
-                </div>
-                <div class="relative rounded-2xl overflow-hidden shadow-md group h-48 bg-slate-800">
-                    <img src="api5.jpeg" alt="Caixa Institucional Apicultura Silvestre" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-3">
-                        <span class="text-xs font-bold text-white">Embalagem Impressa</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 6: DEPOIMENTOS -->
-    <section id="depoimentos" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-                <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider">Opinião dos Clientes</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Avaliações de Quem Confia</h2>
-                <div class="flex items-center justify-center gap-2 text-amber-500 text-lg">
+                <span class="px-3 py-1 rounded-full bg-amber-200 text-amber-950 text-xs font-bold uppercase tracking-wider">Avaliações Verificadas</span>
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2 uppercase">
+                    CONFIANÇA E RECONHECIMENTO GOOGLE
+                </h2>
+                <div class="flex items-center justify-center gap-1.5 text-amber-500 text-lg mt-2">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star-half-stroke"></i>
-                    <span class="text-slate-700 font-bold text-sm ml-2">Avaliado no Google</span>
+                    <span class="text-slate-900 font-black text-sm ml-2">Avaliações no Google Maps (Vilhena/RO)</span>
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-slate-50 border border-slate-200/80 p-6 rounded-2xl relative flex flex-col justify-between">
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <div class="bg-white p-6 rounded-2xl border-2 border-amber-300 shadow-md flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center gap-1 text-amber-500 text-sm mb-4">
+                        <div class="flex items-center gap-1 text-amber-500 text-sm mb-3">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-slate-700 italic text-sm leading-relaxed mb-6">
-                            "Excelente atendimento e produto. O mel é 100% puro, sabor inigualável e a entrega foi super rápida aqui em Vilhena."
+                        <p class="text-slate-800 italic text-xs sm:text-sm leading-relaxed mb-4 font-medium">
+                            "Excelente atendimento e produto."
                         </p>
                     </div>
-                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200/60">
-                        <div class="w-10 h-10 rounded-full bg-honey-500 text-white font-bold flex items-center justify-center text-sm">
-                            M
+                    <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
+                        <div class="w-9 h-9 rounded-full bg-crimson-800 text-white font-black flex items-center justify-center text-xs">
+                            G
                         </div>
                         <div>
-                            <p class="font-bold text-slate-900 text-sm">Cliente Verificado</p>
-                            <p class="text-xs text-slate-500">Avaliação via Google Maps</p>
+                            <p class="font-bold text-slate-900 text-xs">Avaliação do Google</p>
+                            <p class="text-[10px] text-slate-500">Vilhena / RO</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Testimonial 2 -->
-                <div class="bg-slate-50 border border-slate-200/80 p-6 rounded-2xl relative flex flex-col justify-between">
+                <div class="bg-white p-6 rounded-2xl border-2 border-amber-300 shadow-md flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center gap-1 text-amber-500 text-sm mb-4">
+                        <div class="flex items-center gap-1 text-amber-500 text-sm mb-3">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-slate-700 italic text-sm leading-relaxed mb-6">
-                            "Compro as caixas de bisnagas de 500g para revender no meu estabelecimento. A aceitação do público é excelente pelo selo SIF."
+                        <p class="text-slate-800 italic text-xs sm:text-sm leading-relaxed mb-4 font-medium">
+                            "Revendemos as caixas de bisnaga de 500g e 1kg no nosso comércio em Rondônia. Mel de extrema pureza e aceitação indiscutível."
                         </p>
                     </div>
-                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200/60">
-                        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm">
+                    <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
+                        <div class="w-9 h-9 rounded-full bg-forest-900 text-white font-black flex items-center justify-center text-xs">
                             R
                         </div>
                         <div>
-                            <p class="font-bold text-slate-900 text-sm">Revendedor Regional</p>
-                            <p class="text-xs text-slate-500">Parceiro Comercial B2B</p>
+                            <p class="font-bold text-slate-900 text-xs">Comerciante Parceiro</p>
+                            <p class="text-[10px] text-slate-500">Distribuidor em RO / MT</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Testimonial 3 -->
-                <div class="bg-slate-50 border border-slate-200/80 p-6 rounded-2xl relative flex flex-col justify-between">
+                <div class="bg-white p-6 rounded-2xl border-2 border-amber-300 shadow-md flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center gap-1 text-amber-500 text-sm mb-4">
+                        <div class="flex items-center gap-1 text-amber-500 text-sm mb-3">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-slate-700 italic text-sm leading-relaxed mb-6">
-                            "Empresa séria, com controle de qualidade impecável. Recomendo para todos que buscam saúde e procedência garantida."
+                        <p class="text-slate-800 italic text-xs sm:text-sm leading-relaxed mb-4 font-medium">
+                            "Saber que o produto tem o selo S.I.F. 2710 do Ministério da Agricultura nos dá total segurança. Recomendadíssimo!"
                         </p>
                     </div>
-                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200/60">
-                        <div class="w-10 h-10 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center text-sm">
+                    <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
+                        <div class="w-9 h-9 rounded-full bg-amber-600 text-white font-black flex items-center justify-center text-xs">
                             A
                         </div>
                         <div>
-                            <p class="font-bold text-slate-900 text-sm">Consumidor de Vilhena</p>
-                            <p class="text-xs text-slate-500">Compra frequente</p>
+                            <p class="font-bold text-slate-900 text-xs">Consumidor de Confiança</p>
+                            <p class="text-[10px] text-slate-500">Rio Branco / AC</p>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- SECTION 7: LOCALIZAÇÃO E CONTATO -->
-    <section id="localizacao" class="py-20 bg-slate-900 text-white relative">
+    <!-- LOCALIZAÇÃO & CONTATO -->
+    <section id="contato" class="py-16 bg-slate-900 text-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-start">
                 
-                <!-- Contact Info -->
                 <div class="lg:col-span-6 space-y-8">
                     <div>
-                        <span class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider">Atendimento Presencial e Online</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-3">Venha Conhecer ou Entre em Contato</h2>
-                        <p class="text-slate-400 text-sm mt-2">Estamos localizados no coração de Vilhena - RO, de portas abertas para atender suas demandas.</p>
+                        <span class="px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider">
+                            Atendimento Comercial & SAC
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mt-3 uppercase">
+                            FALE CONOSCO
+                        </h2>
+                        <p class="text-slate-300 text-sm mt-2">
+                            Entre em contato com nossa equipe para cotações no atacado ou visite nossa sede em Vilhena/RO.
+                        </p>
                     </div>
 
                     <div class="space-y-6">
-                        <!-- Address -->
+                        
                         <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl flex-shrink-0 border border-amber-500/20">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl shrink-0 border border-amber-500/30">
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-white text-base">Endereço Principal</h4>
-                                <p class="text-slate-300 text-sm">Rua Porto Velho, 633 - Centro</p>
+                                <p class="text-slate-300 text-sm">Rua Porto Velho, 633 – 5º BEC</p>
                                 <p class="text-slate-400 text-xs">Vilhena - RO, CEP: 76988-054</p>
                             </div>
                         </div>
 
-                        <!-- Phone -->
                         <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl flex-shrink-0 border border-amber-500/20">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl shrink-0 border border-amber-500/30">
                                 <i class="fa-solid fa-phone"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-white text-base">Telefones & SAC</h4>
-                                <p class="text-slate-300 text-sm">WhatsApp / Vendas: <strong>(69) 98457-7452</strong></p>
-                                <p class="text-slate-300 text-sm">SAC / Fixo: <strong>(69) 3321-3733</strong></p>
-                                <p class="text-slate-400 text-xs">Porto Velho / Apoio: (69) 9995-2124</p>
+                                <h4 class="font-bold text-white text-base">Contatos Telefônicos & WhatsApp</h4>
+                                <p class="text-slate-300 text-sm"><i class="fa-brands fa-whatsapp text-emerald-400 mr-1.5"></i> WhatsApp Vendas: <strong>(69) 98457-7452</strong></p>
+                                <p class="text-slate-300 text-sm"><i class="fa-solid fa-phone text-amber-400 mr-1.5"></i> Vendas: <strong>(69) 9995-2124</strong> | <strong>(69) 98425-7354</strong></p>
+                                <p class="text-slate-400 text-xs mt-1"><i class="fa-solid fa-headset text-amber-400 mr-1.5"></i> SAC Fixo: <strong>(69) 3321-3733</strong></p>
+                                <p class="text-slate-400 text-xs mt-1"><i class="fa-solid fa-envelope text-amber-400 mr-1.5"></i> E-mail: <strong>vendasapiculturasilvestre@hotmail.com</strong></p>
                             </div>
                         </div>
 
-                        <!-- Hours -->
                         <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl flex-shrink-0 border border-amber-500/20">
-                                <i class="fa-solid fa-clock"></i>
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl shrink-0 border border-emerald-500/30">
+                                <i class="fa-solid fa-id-card"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-white text-base">Horário de Funcionamento</h4>
-                                <p class="text-slate-300 text-sm">Segunda a Sexta-feira: <strong>07:30 às 17:30</strong></p>
-                                <p class="text-slate-400 text-xs">Sábados e Domingos: Fechado</p>
+                                <h4 class="font-bold text-white text-base">Razão Social & Registros Oficiais</h4>
+                                <p class="text-slate-300 text-sm">APICULTURA SILVESTRE LTDA</p>
+                                <p class="text-slate-400 text-xs">CNPJ: <strong>07.010.505/0001-86</strong></p>
+                                <p class="text-emerald-400 text-xs font-semibold mt-1">
+                                    REGISTRO NO MINISTÉRIO DA AGRICULTURA / DIPOA SOB Nº 0001/ER001 (S.I.F. Nº 2710)
+                                </p>
                             </div>
                         </div>
+
                     </div>
 
-                    <div class="pt-4 flex flex-wrap gap-4">
-                        <a href="https://maps.google.com/?q=Rua+Porto+Velho,+633+-+Centro,+Vilhena+-+RO" target="_blank" 
-                           class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 font-semibold text-sm transition-all inline-flex items-center gap-2">
-                            <i class="fa-solid fa-map-location-dot"></i>
+                    <div class="pt-2 flex flex-wrap gap-4">
+                        <a href="https://maps.google.com/?q=Rua+Porto+Velho,+633+-+5+BEC,+Vilhena+-+RO" target="_blank" 
+                           class="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 font-bold text-xs transition-all inline-flex items-center gap-2">
+                            <i class="fa-solid fa-map-location-dot text-base"></i>
                             <span>Abrir no Google Maps</span>
                         </a>
 
-                        <a href="https://wa.me/5569984577452?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20d%C3%BAvidas." target="_blank" 
-                           class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition-all inline-flex items-center gap-2 shadow-lg shadow-emerald-900/50">
+                        <a href="https://wa.me/5569984577452?text=Ol%C3%A1!%20Gostaria%20de%20atendimento%20comercial." target="_blank" 
+                           class="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition-all inline-flex items-center gap-2 shadow-lg uppercase">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
-                            <span>Enviar Mensagem</span>
+                            <span>Falar no WhatsApp</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Interactive Quick Quote Form -->
                 <div class="lg:col-span-6">
-                    <div class="rounded-3xl bg-slate-800/90 border border-slate-700/80 p-8 shadow-2xl backdrop-blur-md">
-                        <h3 class="text-xl font-bold text-white mb-2">Simulador de Pedido Rápido</h3>
-                        <p class="text-xs text-slate-400 mb-6">Selecione suas opções abaixo para gerar sua mensagem direta de WhatsApp.</p>
+                    <div class="rounded-3xl bg-slate-800/90 border-2 border-slate-700 p-6 sm:p-8 shadow-2xl">
+                        <h3 class="text-xl font-bold text-white mb-1">Enviar Solicitação de Orçamento</h3>
+                        <p class="text-xs text-slate-400 mb-6">Preencha abaixo para gerar sua mensagem personalizada direto para o WhatsApp do comercial.</p>
 
-                        <form id="whatsappForm" class="space-y-4">
+                        <form id="contactForm" class="space-y-4">
                             <div>
-                                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Seu Nome / Empresa</label>
-                                <input type="text" id="form-name" placeholder="Ex: Maria da Silva" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-honey-500">
+                                <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Seu Nome / Razão Social da Empresa</label>
+                                <input type="text" id="c-name" placeholder="Ex: Mercado Central" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-amber-500">
                             </div>
 
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Tipo de Cliente</label>
-                                    <select id="form-type" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-honey-500">
-                                        <option value="Consumidor Final">Consumidor Final</option>
-                                        <option value="Comerciante / Revenda">Comerciante / Revenda</option>
-                                        <option value="Produtor Apícola">Produtor Apícola</option>
-                                    </select>
+                                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Cidade / UF</label>
+                                    <input type="text" id="c-city" placeholder="Ex: Vilhena / RO" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-amber-500">
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Interesse Principal</label>
-                                    <select id="form-interest" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-honey-500">
-                                        <option value="Mel 280g">Mel Bisnaga 280g</option>
-                                        <option value="Mel 500g">Mel Frasco 500g</option>
-                                        <option value="Caixas em Atacado">Caixas em Atacado</option>
-                                        <option value="Serviço de Entreposto">Serviço de Entreposto</option>
+                                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Perfil do Cliente</label>
+                                    <select id="c-type" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-amber-500">
+                                        <option value="Supermercado / Mercado">Supermercado / Mercado</option>
+                                        <option value="Empório / Mercearia">Empório / Mercearia</option>
+                                        <option value="Distribuidor">Distribuidor</option>
+                                        <option value="Consumidor Final">Consumidor Final</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div>
-                                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Mensagem Adicional (Opcional)</label>
-                                <textarea id="form-message" rows="3" placeholder="Ex: Qual a quantidade mínima para entrega em Vilhena?" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-honey-500"></textarea>
+                                <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Produtos ou Quantidade de Caixas Desejadas</label>
+                                <textarea id="c-msg" rows="3" placeholder="Ex: Gostaria de cotar 4 caixas de bisnaga 500g e 2 caixas de pote 1kg..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-amber-500"></textarea>
                             </div>
 
-                            <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold text-sm shadow-xl transition-all flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-whatsapp text-lg"></i>
-                                <span>Enviar Pedido Direto para WhatsApp</span>
+                            <button type="submit" class="w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm uppercase shadow-xl transition-all flex items-center justify-center gap-2 border border-emerald-400">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                                <span>Enviar Mensagem de Vendas</span>
                             </button>
                         </form>
                     </div>
@@ -860,58 +1184,99 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-amberwood text-slate-400 py-12 border-t border-amber-950">
+    <footer class="bg-crimson-950 text-slate-300 py-12 border-t-2 border-amber-400">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 pb-12 border-b border-amber-900/50">
+            <div class="grid md:grid-cols-4 gap-8 pb-8 border-b border-crimson-900">
                 
                 <div class="md:col-span-2 space-y-4">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-honey-500 flex items-center justify-center text-slate-950 font-bold text-xl">
-                            <i class="fa-solid fa-jar"></i>
+                        <div class="relative w-12 h-12 rounded-full bg-white p-0.5 border border-amber-400 overflow-hidden shrink-0">
+                            <img src="logomarca.jpg" 
+                                 alt="Logo Apicultura Silvestre" 
+                                 class="w-full h-full object-cover rounded-full absolute inset-0 z-10 transition-opacity duration-300"
+                                 onerror="this.style.opacity='0'; this.style.pointerEvents='none';">
+                            <svg class="w-full h-full rounded-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="100" cy="92" r="86" fill="#FFFDF0" stroke="#14532D" stroke-width="6"/>
+                                <circle cx="100" cy="92" r="79" fill="none" stroke="#14532D" stroke-width="1.5"/>
+                                <path id="footerLogoTextPath" d="M 28 92 A 72 72 0 0 1 172 92" fill="none"/>
+                                <text font-family="'Outfit', Arial, sans-serif" font-weight="900" font-size="14.5" fill="#14532D" letter-spacing="0.5">
+                                    <textPath href="#footerLogoTextPath" startOffset="50%" text-anchor="middle">APICULTURA SILVESTRE</textPath>
+                                </text>
+                                <g fill="#14532D" stroke="#14532D">
+                                    <path d="M70,78 C60,68 65,48 80,43 C85,33 105,28 115,38 C125,33 140,43 135,58 C145,68 135,83 125,83 C115,88 85,88 70,78 Z"/>
+                                    <path d="M96,81 L104,81 L106,105 L94,105 Z" />
+                                    <path d="M100,101 Q80,111 60,109 M100,101 Q75,117 55,118 M100,101 Q120,111 140,109 M100,101 Q125,117 145,118 M100,103 L100,119" stroke-width="3" stroke-linecap="round" fill="none"/>
+                                </g>
+                                <g transform="translate(42, 94) scale(0.65)">
+                                    <ellipse cx="0" cy="0" rx="10" ry="7" fill="#FACC15" stroke="#14532D" stroke-width="1.5"/>
+                                    <line x1="-3" y1="-6" x2="-3" y2="6" stroke="#14532D" stroke-width="2"/>
+                                    <line x1="3" y1="-6" x2="3" y2="6" stroke="#14532D" stroke-width="2"/>
+                                    <ellipse cx="-7" cy="-8" rx="5" ry="8" fill="#E0F2FE" stroke="#14532D" stroke-width="1" transform="rotate(-30 -7 -8)"/>
+                                </g>
+                                <g transform="translate(158, 94) scale(0.65)">
+                                    <ellipse cx="0" cy="0" rx="10" ry="7" fill="#FACC15" stroke="#14532D" stroke-width="1.5"/>
+                                    <line x1="-3" y1="-6" x2="-3" y2="6" stroke="#14532D" stroke-width="2"/>
+                                    <line x1="3" y1="-6" x2="3" y2="6" stroke="#14532D" stroke-width="2"/>
+                                    <ellipse cx="7" cy="-8" rx="5" ry="8" fill="#E0F2FE" stroke="#14532D" stroke-width="1" transform="rotate(30 7 -8)"/>
+                                </g>
+                                <text x="100" y="142" font-family="Georgia, 'Times New Roman', serif" font-weight="900" font-size="28" fill="#9F1239" text-anchor="middle">MEL</text>
+                                <text x="100" y="172" font-family="'Caveat', cursive, sans-serif" font-weight="700" font-size="20" fill="#14532D" text-anchor="middle">Desde 2002</text>
+                            </svg>
                         </div>
-                        <span class="text-xl font-bold text-white tracking-tight">APICULTURA <span class="text-honey-400">SILVESTRE</span></span>
+                        <div>
+                            <span class="text-xl font-black text-white tracking-tight uppercase">
+                                APICULTURA <span class="text-amber-400">SILVESTRE</span>
+                            </span>
+                            <span class="text-[10px] text-amber-200 block">Vilhena - Rondônia</span>
+                        </div>
                     </div>
-                    <p class="text-xs text-slate-300 max-w-md leading-relaxed">
-                        Prestação de serviços na área de entreposto de mel de apicultura silvestre, análise de qualidade, envasamento e comércio de mel de alta qualidade em Vilhena/RO.
+                    
+                    <p class="font-handwriting text-amber-200 text-xl font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-iperosa-500"></i>
+                        "O cuidado com as abelhas faz o mel mais puro e a vida mais doce!"
                     </p>
-                    <p class="text-xs text-emerald-400 font-semibold">
-                        <i class="fa-solid fa-shield-halved"></i> Ministério da Agricultura - Registro S.I.F. Nº 00012710
+
+                    <p class="text-xs text-slate-400 max-w-md leading-relaxed">
+                        Há mais de 20 anos produzindo e envasando mel puro de abelha inspecionado pelo Ministério da Agricultura (S.I.F. Nº 2710) para Rondônia, Acre e Mato Grosso.
                     </p>
                 </div>
 
                 <div>
-                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Navegação</h4>
+                    <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-3">Links Rápidos</h4>
                     <ul class="space-y-2 text-xs">
-                        <li><a href="#inicio" class="hover:text-honey-400 transition-colors">Início</a></li>
-                        <li><a href="#sobre" class="hover:text-honey-400 transition-colors">Sobre a Apicultura</a></li>
-                        <li><a href="#servicos" class="hover:text-honey-400 transition-colors">Serviços e Beneficiamento</a></li>
-                        <li><a href="#produtos" class="hover:text-honey-400 transition-colors">Produtos e Frascos</a></li>
-                        <li><a href="#localizacao" class="hover:text-honey-400 transition-colors">Localização</a></li>
+                        <li><a href="#inicio" class="hover:text-amber-300">Início</a></li>
+                        <li><a href="#quem-somos" class="hover:text-amber-300">Quem Somos</a></li>
+                        <li><a href="#diferenciais" class="hover:text-amber-300">Nossos Diferenciais</a></li>
+                        <li><a href="#tabela-valores" class="hover:text-amber-300 font-bold text-amber-300">Proposta Comercial</a></li>
+                        <li><a href="#condicoes" class="hover:text-amber-300">Condições Comerciais</a></li>
+                        <li><a href="#contato" class="hover:text-amber-300">Contato & Localização</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Contatos</h4>
+                    <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-3">Vendas & SAC</h4>
                     <ul class="space-y-2 text-xs">
-                        <li><i class="fa-solid fa-phone text-honey-400 mr-2"></i> (69) 3321-3733 (SAC)</li>
-                        <li><i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i> (69) 98457-7452</li>
-                        <li><i class="fa-solid fa-location-dot text-honey-400 mr-2"></i> Vilhena - Rondônia</li>
+                        <li><i class="fa-brands fa-whatsapp text-emerald-400 mr-1.5"></i> Vendas: (69) 98457-7452</li>
+                        <li><i class="fa-solid fa-phone text-amber-400 mr-1.5"></i> Vendas: (69) 9995-2124</li>
+                        <li><i class="fa-solid fa-phone text-amber-400 mr-1.5"></i> Vendas: (69) 98425-7354</li>
+                        <li><i class="fa-solid fa-headset text-amber-400 mr-1.5"></i> SAC: (69) 3321-3733</li>
                     </ul>
                 </div>
+
             </div>
 
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-                <p>&copy; 2026 Apicultura Silvestre Ltda. Todos os direitos reservados. CNPJ 07.010.505/0001-86</p>
-                <p>Desenvolvido para máxima confiança e facilidade no atendimento.</p>
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-3 text-center sm:text-left">
+                <p>&copy; 2026 APICULTURA SILVESTRE LTDA. CNPJ: 07.010.505/0001-86. Registro DIPOA Nº 0001/ER001 (S.I.F. 2710)</p>
+                <p>Vilhena - Rondônia (RO)</p>
             </div>
         </div>
     </footer>
 
     <!-- FLOATING WHATSAPP BUTTON -->
-    <a href="https://wa.me/5569984577452?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Apicultura%20Silvestre%20e%20gostaria%20de%20atendimento." 
+    <a href="https://wa.me/5569984577452?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Apicultura%20Silvestre%20e%20gostaria%20de%20fazer%20um%20pedido." 
        target="_blank" 
        aria-label="Contato via WhatsApp"
-       class="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-2xl flex items-center justify-center text-3xl hover:scale-110 active:scale-95 transition-all duration-300 gold-glow">
+       class="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-2xl flex items-center justify-center text-3xl hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-emerald-300">
         <i class="fa-brands fa-whatsapp"></i>
         <span class="absolute -top-1 -right-1 flex h-4 w-4">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
@@ -919,8 +1284,9 @@
         </span>
     </a>
 
+    <!-- JavaScript Logic -->
     <script>
-        // Mobile Drawer Toggle Logic
+        // Mobile Drawer Toggle
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -928,31 +1294,122 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Close drawer on link click
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
         });
 
-        // Quick Quote Form Redirect to WhatsApp
-        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('form-name').value.trim();
-            const type = document.getElementById('form-type').value;
-            const interest = document.getElementById('form-interest').value;
-            const extra = document.getElementById('form-message').value.trim();
+        // Interactive Box & Quote Calculator Logic
+        let orderCart = {};
 
-            let text = `Olá! Meu nome é *${name}* (${type}).%0A`;
-            text += `Tenho interesse em: *${interest}*.%0A`;
-            if (extra) {
-                text += `Mensagem: ${extra}%0A`;
+        function addToOrder(productName, pricePerBox) {
+            if (!orderCart[productName]) {
+                orderCart[productName] = { quantity: 1, price: pricePerBox };
+            } else {
+                orderCart[productName].quantity += 1;
             }
-            text += `%0AVim pelo site da Apicultura Silvestre!`;
+            updateCartUI();
+        }
 
-            const whatsappUrl = `https://wa.me/5569984577452?text=${text}`;
+        function removeFromOrder(productName) {
+            if (orderCart[productName]) {
+                delete orderCart[productName];
+                updateCartUI();
+            }
+        }
+
+        function clearOrder() {
+            orderCart = {};
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const listEl = document.getElementById('order-items-list');
+            const totalBoxesEl = document.getElementById('total-boxes-count');
+            const totalPriceEl = document.getElementById('total-price-value');
+
+            let totalBoxes = 0;
+            let totalPrice = 0;
+            let html = '';
+
+            const keys = Object.keys(orderCart);
+
+            if (keys.length === 0) {
+                listEl.innerHTML = '<p class="text-xs text-slate-400 italic">Nenhuma caixa selecionada ainda. Clique no botão "+ Adicionar Caixa" em qualquer linha da tabela acima.</p>';
+                totalBoxesEl.innerText = '0 Caixas selecionadas';
+                totalPriceEl.innerText = 'R$ 0,00';
+                return;
+            }
+
+            keys.forEach(name => {
+                const item = orderCart[name];
+                const itemTotal = item.quantity * item.price;
+                totalBoxes += item.quantity;
+                totalPrice += itemTotal;
+
+                html += `
+                    <div class="flex items-center justify-between bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <div>
+                            <span class="font-bold text-amber-300 text-sm">${name}</span>
+                            <span class="text-xs text-slate-400 block">${item.quantity} caixa(s) x R$ ${item.price.toFixed(2).replace('.', ',')}</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="font-black text-white text-sm">R$ ${itemTotal.toFixed(2).replace('.', ',')}</span>
+                            <button onclick="removeFromOrder('${name}')" class="text-rose-400 hover:text-rose-300 text-xs px-2 py-1 rounded bg-rose-950/70 border border-rose-800">
+                                Remover
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            listEl.innerHTML = html;
+            totalBoxesEl.innerHTML = `${totalBoxes} Caixa(s) selecionada(s) ${totalBoxes < 3 ? '<span class="text-rose-400 font-bold ml-1">(Mínimo 3 caixas)</span>' : '<span class="text-emerald-400 font-bold ml-1">✓ Mínimo atingido</span>'}`;
+            totalPriceEl.innerText = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+        }
+
+        function sendOrderToWhatsApp() {
+            const keys = Object.keys(orderCart);
+            if (keys.length === 0) {
+                alert('Por favor, adicione pelo menos 1 caixa na tabela acima para simular o pedido.');
+                return;
+            }
+
+            let totalBoxes = 0;
+            let totalPrice = 0;
+            let messageText = '*SOLICITAÇÃO DE ORÇAMENTO / PEDIDO DE MEL*%0A%0A';
+            messageText += '*Caixas Selecionadas:*%0A';
+
+            keys.forEach(name => {
+                const item = orderCart[name];
+                const itemTotal = item.quantity * item.price;
+                totalBoxes += item.quantity;
+                totalPrice += itemTotal;
+                messageText += `• ${item.quantity}x ${name} = R$ ${itemTotal.toFixed(2).replace('.', ',')}%0A`;
+            });
+
+            messageText += `%0A*Total de Caixas:* ${totalBoxes}`;
+            messageText += `%0A*Valor Estimado:* R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+            messageText += `%0A%0A_Vim pelo simulador do site oficial da Apicultura Silvestre!_`;
+
+            const whatsappUrl = `https://wa.me/5569984577452?text=${messageText}`;
             window.open(whatsappUrl, '_blank');
+        }
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('c-name').value.trim();
+            const city = document.getElementById('c-city').value.trim();
+            const type = document.getElementById('c-type').value;
+            const msg = document.getElementById('c-msg').value.trim();
+
+            let text = `Olá! Meu nome é *${name}* (${type}) de *${city}*.%0A`;
+            if (msg) text += `Mensagem: ${msg}%0A`;
+            text += `%0AGostaria de cotação de mel da Apicultura Silvestre!`;
+
+            window.open(`https://wa.me/5569984577452?text=${text}`, '_blank');
         });
     </script>
 </body>
