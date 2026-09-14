@@ -16,23 +16,23 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Configuração ajustada para o tom Amarelo Mercado Pago (#FFE600) e Verde Floresta
+        // Configuração completa dos tons de cores oficiais do folheto da Apicultura Silvestre
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         amber: {
-                            50: '#FFFFF5',
-                            100: '#FFFEE0',
-                            200: '#FFF999',
-                            300: '#FFF14D',
-                            400: '#FFE600', // Amarelo Mercado Pago oficial
-                            500: '#F5D600',
-                            600: '#D9B800',
-                            700: '#B49300',
-                            800: '#8A6E00',
-                            900: '#5C4700',
-                            950: '#3A2B00',
+                            50: '#FFFDF0',
+                            100: '#FEF3C7',
+                            200: '#FDE68A',
+                            300: '#FDE047',
+                            400: '#FACC15',
+                            500: '#F59E0B',
+                            600: '#D97706',
+                            700: '#B45309',
+                            800: '#92400E',
+                            900: '#78350F',
+                            950: '#451A03',
                         },
                         crimson: {
                             50: '#FFF1F2',
@@ -71,6 +71,7 @@
                 }
             }
         }
+
         // Função global de tratamento seguro de carregamento da logomarca oficial
         function handleLogoLoadError(img) {
             if (img.dataset.fallbackTried) return;
@@ -154,7 +155,7 @@
 <body class="antialiased text-slate-900 selection:bg-amber-400 selection:text-slate-950">
 
     <!-- Top Announcement Bar -->
-    <div class="bg-forest-950 text-amber-100 text-xs py-2 px-4 border-b border-forest-900">
+    <div class="bg-crimson-950 text-amber-100 text-xs py-2 px-4 border-b border-crimson-900">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
             <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3">
                 <span class="inline-flex items-center gap-1.5 font-extrabold text-emerald-300 bg-emerald-950 px-3 py-0.5 rounded-full border border-emerald-600/60 shadow-sm">
@@ -169,7 +170,7 @@
                 <a href="tel:6933213733" class="hover:text-amber-300 transition-colors flex items-center gap-1">
                     <i class="fa-solid fa-headset text-amber-400"></i> SAC: (69) 3321-3733
                 </a>
-                <span class="text-forest-700">|</span>
+                <span class="text-crimson-700">|</span>
                 <a href="https://wa.me/5569984577452" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-bold flex items-center gap-1">
                     <i class="fa-brands fa-whatsapp text-sm"></i> (69) 98457-7452
                 </a>
@@ -231,11 +232,11 @@
                             <span class="text-lg sm:text-2xl font-black text-forest-900 tracking-tight leading-none uppercase font-heading">
                                 APICULTURA <span class="text-amber-600">SILVESTRE</span>
                             </span>
-                            <span class="hidden sm:inline-block px-2 py-0.5 rounded bg-forest-900 text-amber-300 text-[10px] font-black uppercase tracking-wider">
+                            <span class="hidden sm:inline-block px-2 py-0.5 rounded bg-crimson-800 text-white text-[10px] font-black uppercase tracking-wider">
                                 Desde 2002
                             </span>
                         </div>
-                        <span class="font-handwriting text-amber-900 font-bold text-sm sm:text-base leading-snug mt-0.5">
+                        <span class="font-handwriting text-crimson-800 font-bold text-sm sm:text-base leading-snug mt-0.5">
                             Presente nos momentos mais doces da sua vida ♡
                         </span>
                         <span class="text-[10px] font-extrabold text-emerald-800 uppercase tracking-wider block">
@@ -249,7 +250,7 @@
                     <a href="#inicio" class="hover:text-amber-600 transition-colors">Início</a>
                     <a href="#quem-somos" class="hover:text-amber-600 transition-colors">Quem Somos</a>
                     <a href="#diferenciais" class="hover:text-amber-600 transition-colors">Diferenciais</a>
-                    <a href="#tabela-valores" class="hover:text-amber-600 transition-colors text-forest-900 font-extrabold flex items-center gap-1">
+                    <a href="#tabela-valores" class="hover:text-amber-600 transition-colors text-crimson-800 font-extrabold flex items-center gap-1">
                         <i class="fa-solid fa-tags text-amber-500"></i> Proposta Comercial
                     </a>
                     <a href="#condicoes" class="hover:text-amber-600 transition-colors">Condições</a>
@@ -298,29 +299,29 @@
                 <!-- Left Column Text Content -->
                 <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
                     
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400 text-slate-950 font-bold text-xs shadow-sm border border-amber-500">
-                        <span class="w-2 h-2 rounded-full bg-forest-900 animate-pulse"></span>
-                        <span class="font-handwriting text-lg text-forest-950 leading-none">Presente nos momentos mais doces da sua vida ♡</span>
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-200/80 border border-amber-400 text-amber-950 font-bold text-xs shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-crimson-600 animate-pulse"></span>
+                        <span class="font-handwriting text-lg text-crimson-900 leading-none">Presente nos momentos mais doces da sua vida ♡</span>
                     </div>
 
-                    <!-- Main Hero Banner - Amarelo Mercado Pago vibrante com texto verde floresta -->
-                    <div class="bg-gradient-to-br from-amber-300 via-amber-400 to-amber-500 p-6 sm:p-8 rounded-3xl text-forest-950 shadow-2xl border-4 border-amber-300 relative overflow-hidden">
+                    <!-- Main Red Banner matching flyer style -->
+                    <div class="bg-crimson-gradient p-6 sm:p-8 rounded-3xl text-white shadow-2xl border-4 border-amber-400 relative overflow-hidden">
                         <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-                            <span class="px-3 py-1 rounded bg-forest-950 text-amber-300 text-xs font-black uppercase tracking-wider shadow">
+                            <span class="px-3 py-1 rounded bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider shadow">
                                 Desde 2002 • Vilhena / RO
                             </span>
-                            <span class="px-3 py-1 rounded bg-forest-900 text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1 shadow-sm">
-                                <svg class="w-3.5 h-3.5 text-amber-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span class="px-3 py-1 rounded bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                 S.I.F. Nº 2710
                             </span>
                         </div>
 
-                        <h1 class="text-3xl sm:text-5xl font-black text-forest-950 tracking-tight leading-none uppercase">
+                        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-none uppercase">
                             APICULTURA <br/>
-                            <span class="text-forest-900 drop-shadow-sm">SILVESTRE</span>
+                            <span class="text-amber-300 drop-shadow-md">SILVESTRE</span>
                         </h1>
 
-                        <p class="mt-4 text-forest-950 text-sm sm:text-base font-bold leading-relaxed">
+                        <p class="mt-4 text-amber-100 text-sm sm:text-base font-medium leading-relaxed">
                             Mel de abelha 100% puro extraído da florada silvestre amazônica e nativas de Ipê, inspecionado sob registro oficial do Ministério da Agricultura (S.I.F. Nº 2710). Atendendo supermercados, comércios e distribuidores em <strong>Rondônia, Acre e Mato Grosso</strong>.
                         </p>
                     </div>
@@ -368,7 +369,7 @@
                         </a>
 
                         <a href="#tabela-valores" 
-                           class="w-full sm:w-auto px-6 py-4 rounded-2xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-base shadow-lg transition-all flex items-center justify-center gap-2 border-2 border-amber-600">
+                           class="w-full sm:w-auto px-6 py-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-base shadow-lg transition-all flex items-center justify-center gap-2 border-2 border-amber-600">
                             <i class="fa-solid fa-table-list text-slate-900"></i>
                             <span>Ver Proposta de Valores</span>
                         </a>
@@ -378,10 +379,10 @@
                 <!-- Right Column Image Display (Potes de Mel e Ipê Rosa em Flor) -->
                 <div class="lg:col-span-5 relative">
                     <div class="relative z-10 max-w-md mx-auto">
-                        <div class="rounded-3xl bg-gradient-to-b from-amber-300 via-amber-200 to-amber-400 p-3 sm:p-4 shadow-2xl border-4 border-amber-400 relative overflow-hidden">
+                        <div class="rounded-3xl bg-gradient-to-b from-amber-100 via-white to-amber-200 p-3 sm:p-4 shadow-2xl border-4 border-amber-400 relative overflow-hidden">
                             
                             <div class="flex items-center justify-between mb-2.5 px-1">
-                                <span class="text-xs font-black uppercase text-amber-950 bg-amber-400 px-3 py-1 rounded-full border border-amber-500 flex items-center gap-1.5 shadow-sm">
+                                <span class="text-xs font-black uppercase text-amber-950 bg-amber-300 px-3 py-1 rounded-full border border-amber-400 flex items-center gap-1.5">
                                     <span class="w-2.5 h-2.5 rounded-full bg-iperosa-500 inline-block"></span> Flora Silvestre & Ipê Rosa
                                 </span>
                                 <span class="text-[10px] font-extrabold text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-full border border-emerald-300">
@@ -599,7 +600,7 @@
     <section id="tabela-valores" class="py-16 bg-white border-b border-amber-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="bg-gradient-to-r from-forest-900 via-forest-800 to-forest-950 rounded-3xl p-6 sm:p-8 text-white text-center shadow-xl mb-10 border-4 border-amber-400 relative overflow-hidden">
+            <div class="bg-crimson-gradient rounded-3xl p-6 sm:p-8 text-white text-center shadow-xl mb-10 border-4 border-amber-400 relative overflow-hidden">
                 <span class="px-4 py-1 rounded-full bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider mb-2 inline-block shadow">
                     Tabela Oficial para Revenda & Atacado
                 </span>
@@ -614,7 +615,7 @@
             <div class="overflow-x-auto rounded-2xl border-2 border-amber-300 shadow-xl bg-white mb-6">
                 <table class="w-full text-left border-collapse min-w-[700px]">
                     <thead>
-                        <tr class="bg-forest-950 text-amber-200 text-xs uppercase font-extrabold tracking-wider border-b-2 border-amber-400">
+                        <tr class="bg-crimson-900 text-amber-200 text-xs uppercase font-extrabold tracking-wider border-b-2 border-amber-400">
                             <th class="py-4 px-6">Produto</th>
                             <th class="py-4 px-4">Embalagem por Caixa</th>
                             <th class="py-4 px-4 text-center">Valor Unitário</th>
@@ -631,7 +632,7 @@
                             </td>
                             <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 12 unidades</td>
                             <td class="py-4 px-4 text-center font-black text-slate-800">R$ 40,00</td>
-                            <td class="py-4 px-6 text-right font-black text-forest-900 text-base">R$ 480,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 480,00</td>
                             <td class="py-4 px-4 text-center">
                                 <button onclick="addToOrder('Mel Silvestre Bisnaga 1kg', 480)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
                                     + Adicionar Caixa
@@ -646,7 +647,7 @@
                             </td>
                             <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 12 unidades</td>
                             <td class="py-4 px-4 text-center font-black text-slate-800">R$ 40,00</td>
-                            <td class="py-4 px-6 text-right font-black text-forest-900 text-base">R$ 480,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 480,00</td>
                             <td class="py-4 px-4 text-center">
                                 <button onclick="addToOrder('Mel Silvestre Pote 1kg', 480)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
                                     + Adicionar Caixa
@@ -661,7 +662,7 @@
                             </td>
                             <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 24 unidades</td>
                             <td class="py-4 px-4 text-center font-black text-slate-800">R$ 23,00</td>
-                            <td class="py-4 px-6 text-right font-black text-forest-900 text-base">R$ 552,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 552,00</td>
                             <td class="py-4 px-4 text-center">
                                 <button onclick="addToOrder('Mel Silvestre Bisnaga 500g', 552)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
                                     + Adicionar Caixa
@@ -676,7 +677,7 @@
                             </td>
                             <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 24 unidades</td>
                             <td class="py-4 px-4 text-center font-black text-slate-800">R$ 23,00</td>
-                            <td class="py-4 px-6 text-right font-black text-forest-900 text-base">R$ 552,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 552,00</td>
                             <td class="py-4 px-4 text-center">
                                 <button onclick="addToOrder('Mel Silvestre Pote 500g', 552)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
                                     + Adicionar Caixa
@@ -691,7 +692,7 @@
                             </td>
                             <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 36 unidades</td>
                             <td class="py-4 px-4 text-center font-black text-slate-800">R$ 16,00</td>
-                            <td class="py-4 px-6 text-right font-black text-forest-900 text-base">R$ 576,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 576,00</td>
                             <td class="py-4 px-4 text-center">
                                 <button onclick="addToOrder('Mel Silvestre Bisnaga 280g', 576)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
                                     + Adicionar Caixa
@@ -706,7 +707,7 @@
                             </td>
                             <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 36 unidades</td>
                             <td class="py-4 px-4 text-center font-black text-slate-800">R$ 16,00</td>
-                            <td class="py-4 px-6 text-right font-black text-forest-900 text-base">R$ 576,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 576,00</td>
                             <td class="py-4 px-4 text-center">
                                 <button onclick="addToOrder('Mel Silvestre Pote 290g', 576)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
                                     + Adicionar Caixa
@@ -721,7 +722,7 @@
                             </td>
                             <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 40 unidades</td>
                             <td class="py-4 px-4 text-center font-black text-slate-800">R$ 15,00</td>
-                            <td class="py-4 px-6 text-right font-black text-forest-900 text-base">R$ 600,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 600,00</td>
                             <td class="py-4 px-4 text-center">
                                 <button onclick="addToOrder('Mel Silvestre Bisnaga 250g', 600)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
                                     + Adicionar Caixa
@@ -736,7 +737,7 @@
                             </td>
                             <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 150 unidades</td>
                             <td class="py-4 px-4 text-center font-black text-slate-800">R$ 3,70</td>
-                            <td class="py-4 px-6 text-right font-black text-forest-900 text-base">R$ 555,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 555,00</td>
                             <td class="py-4 px-4 text-center">
                                 <button onclick="addToOrder('Sachê Mel 55g (cartelado)', 555)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
                                     + Adicionar Caixa
@@ -751,7 +752,7 @@
                             </td>
                             <td class="py-4 px-4 text-slate-600 text-xs font-semibold">Caixa c/ 10 unidades</td>
                             <td class="py-4 px-4 text-center font-black text-slate-800">R$ 60,00</td>
-                            <td class="py-4 px-6 text-right font-black text-forest-900 text-base">R$ 600,00</td>
+                            <td class="py-4 px-6 text-right font-black text-crimson-800 text-base">R$ 600,00</td>
                             <td class="py-4 px-4 text-center">
                                 <button onclick="addToOrder('Sachê 1kg', 600)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all hover:scale-105 active:scale-95">
                                     + Adicionar Caixa
@@ -807,7 +808,7 @@
     <section id="condicoes" class="py-16 bg-honey-pattern border-b border-amber-300/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="bg-gradient-to-r from-forest-900 via-forest-800 to-forest-950 rounded-3xl p-6 text-white text-center shadow-lg border-2 border-amber-400 mb-10">
+            <div class="bg-crimson-gradient rounded-3xl p-6 text-white text-center shadow-lg border-2 border-amber-400 mb-10">
                 <h2 class="text-2xl sm:text-3xl font-black uppercase tracking-tight">
                     CONDIÇÕES COMERCIAIS
                 </h2>
@@ -818,14 +819,14 @@
                 
                 <!-- Card 1: Pedido Mínimo -->
                 <div class="bg-white rounded-2xl p-6 shadow-md border-2 border-amber-300 text-center flex flex-col items-center justify-between">
-                    <div class="w-16 h-16 rounded-2xl bg-amber-100 text-forest-900 flex items-center justify-center text-3xl mb-4 border border-amber-300 shadow-sm">
-                        <svg class="w-8 h-8 text-forest-900" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-100 text-crimson-800 flex items-center justify-center text-3xl mb-4 border border-amber-300 shadow-sm">
+                        <svg class="w-8 h-8 text-amber-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                         </svg>
                     </div>
                     <div>
                         <p class="text-[11px] font-black uppercase text-slate-500 tracking-wider">PEDIDO MÍNIMO</p>
-                        <h3 class="text-2xl font-black text-forest-900 mt-1">03 CAIXAS</h3>
+                        <h3 class="text-2xl font-black text-crimson-900 mt-1">03 CAIXAS</h3>
                         <p class="text-slate-600 text-xs mt-2">Pode ser mesclado entre diferentes tipos de produtos e potes.</p>
                     </div>
                 </div>
@@ -894,15 +895,11 @@
 
             <div class="grid md:grid-cols-3 gap-8">
                 
-                <!-- Card 1: Bisnagas Dosadoras -->
                 <div class="bg-white rounded-3xl border-2 border-amber-300 overflow-hidden shadow-md hover:shadow-xl transition-all flex flex-col justify-between">
                     <div>
                         <div class="relative h-64 overflow-hidden group bg-amber-50">
-                            <img src="api1.jpeg" 
-                                 alt="Bisnagas Dosadoras de Mel Silvestre" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                 onerror="this.onerror=null; this.src='api1.jpeg';">
-                            <span class="absolute top-4 right-4 bg-amber-400 text-amber-950 text-xs font-black uppercase px-3 py-1 rounded-full shadow">
+                            <img src="api1.jpeg" alt="Mel Silvestre em Bisnagas Dosadoras" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-amber-500 text-slate-950 text-xs font-black uppercase px-3 py-1 rounded-full shadow">
                                 Bisnagas 250g, 280g, 500g, 1kg
                             </span>
                         </div>
@@ -918,22 +915,21 @@
                         </div>
                     </div>
                     <div class="p-6 pt-0">
-                        <a href="https://wa.me/5569984577452?text=Gostaria%20de%20cotar%20bisnagas%20dosadoras%20para%20revenda." target="_blank" class="w-full py-3.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-xs text-center block transition-colors shadow uppercase">
+                        <a href="https://wa.me/5569984577452?text=Gostaria%20de%20cotar%20caixas%20de%20bisnagas%20de%20mel." target="_blank" class="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs text-center block transition-colors shadow uppercase">
                             Cotar Bisnagas no WhatsApp
                         </a>
                     </div>
                 </div>
 
-                <!-- Card 2: Potes Tradicionais -->
-                <div class="bg-white rounded-3xl border-2 border-amber-300 overflow-hidden shadow-md hover:shadow-xl transition-all flex flex-col justify-between">
+                <div class="bg-white rounded-3xl border-2 border-amber-400 overflow-hidden shadow-xl transition-all flex flex-col justify-between relative">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 bg-crimson-800 text-white font-black text-[10px] uppercase px-4 py-1 rounded-b-lg shadow z-10">
+                        Campeão de Vendas
+                    </span>
                     <div>
                         <div class="relative h-64 overflow-hidden group bg-amber-50">
-                            <img src="WhatsApp Image 2026-09-12 at 22.19.49.jpg" 
-                                 alt="Potes Tradicionais de Mel Silvestre" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                 onerror="this.onerror=null; this.src='api1.jpeg';">
-                            <span class="absolute top-4 right-4 bg-forest-900 text-amber-300 text-xs font-black uppercase px-3 py-1 rounded-full shadow">
-                                Campeão de Vendas
+                            <img src="WhatsApp Image 2026-09-12 at 22.19.49.jpg" alt="Mel Silvestre em Potes Tradicionais" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='api1.jpeg';">
+                            <span class="absolute top-4 right-4 bg-forest-900 text-white text-xs font-black uppercase px-3 py-1 rounded-full shadow">
+                                Potes 290g, 500g, 1kg
                             </span>
                         </div>
                         <div class="p-6">
@@ -948,38 +944,34 @@
                         </div>
                     </div>
                     <div class="p-6 pt-0">
-                        <a href="https://wa.me/5569984577452?text=Gostaria%20de%20cotar%20potes%20tradicionais%20para%20revenda." target="_blank" class="w-full py-3.5 rounded-xl bg-forest-900 hover:bg-forest-800 text-white font-black text-xs text-center block transition-colors shadow uppercase">
+                        <a href="https://wa.me/5569984577452?text=Gostaria%20de%20cotar%20caixas%20de%20potes%20de%20mel." target="_blank" class="w-full py-3.5 rounded-xl bg-crimson-800 hover:bg-crimson-900 text-white font-black text-xs text-center block transition-colors shadow-lg uppercase">
                             Cotar Potes no WhatsApp
                         </a>
                     </div>
                 </div>
 
-                <!-- Card 3: Bisnagas & Sachês -->
                 <div class="bg-white rounded-3xl border-2 border-amber-300 overflow-hidden shadow-md hover:shadow-xl transition-all flex flex-col justify-between">
                     <div>
                         <div class="relative h-64 overflow-hidden group bg-amber-50">
-                            <img src="api3.jpeg" 
-                                 alt="Caixas de Bisnagas e Sachês - Apicultura Silvestre" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                 onerror="this.onerror=null; this.src='api1.jpeg';">
+                            <img src="api3.jpeg" alt="Sachês de Mel Apicultura Silvestre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <span class="absolute top-4 right-4 bg-slate-900 text-white text-xs font-black uppercase px-3 py-1 rounded-full shadow">
-                                Bisnagas & Sachês
+                                Sachês 55g & 1kg
                             </span>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-slate-900 mb-2">Bisnagas & Sachês</h3>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Sachês & Atacado</h3>
                             <p class="text-slate-600 text-xs leading-relaxed mb-4">
-                                Caixas lacradas de bisnagas (250g, 280g, 500g, 1kg) e sachês cartelados para revenda com despacho ágil.
+                                Sachês de 55g cartelados (150 un/cx) e sachês de 1kg (10 un/cx). Ideal para padarias, lanchonetes e merendas.
                             </p>
                             <ul class="text-xs text-slate-700 space-y-1.5 mb-4">
-                                <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Caixas de Bisnagas prontas para comércio</li>
-                                <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Sachês 55g (150 un/cx) e Sachês 1kg (10 un/cx)</li>
+                                <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Sachê 55g cartelado em caixa c/ 150 un</li>
+                                <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Sachê 1kg em caixa c/ 10 un</li>
                             </ul>
                         </div>
                     </div>
                     <div class="p-6 pt-0">
-                        <a href="https://wa.me/5569984577452?text=Gostaria%20de%20cotar%20bisnagas%20e%20sach%C3%AAs%20para%20revenda." target="_blank" class="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-black text-xs text-center block transition-colors shadow uppercase">
-                            Cotar Bisnagas e Sachês no WhatsApp
+                        <a href="https://wa.me/5569984577452?text=Gostaria%20de%20cotar%20caixas%20de%20sach%C3%AAs%20de%20mel." target="_blank" class="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-black text-xs text-center block transition-colors shadow uppercase">
+                            Cotar Sachês no WhatsApp
                         </a>
                     </div>
                 </div>
@@ -1192,9 +1184,9 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-forest-950 text-slate-300 py-12 border-t-2 border-amber-400">
+    <footer class="bg-crimson-950 text-slate-300 py-12 border-t-2 border-amber-400">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 pb-8 border-b border-forest-900">
+            <div class="grid md:grid-cols-4 gap-8 pb-8 border-b border-crimson-900">
                 
                 <div class="md:col-span-2 space-y-4">
                     <div class="flex items-center gap-3">
