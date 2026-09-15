@@ -16,6 +16,7 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // Configuração do Tailwind para o tom Amarelo Mercado Pago (#FFE600) e Verde Floresta
         tailwind.config = {
             theme: {
                 screens: {
@@ -114,7 +115,7 @@
 </head>
 <body class="antialiased text-slate-900 selection:bg-amber-400 selection:text-slate-950 w-full overflow-x-hidden">
 
-    <!-- Barra Superior Informativa -->
+    <!-- Barra Superior Informativa com Proteção contra Transbordo em Telas Pequenas -->
     <div class="bg-forest-950 text-amber-100 text-[11px] sm:text-xs py-2 px-3 sm:px-6 border-b border-forest-900 overflow-hidden">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
             <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3 text-center md:text-left">
@@ -138,14 +139,14 @@
         </div>
     </div>
 
-    <!-- Main Header Sticky (Layout limpo, espaçoso e sem botão extrapolando a margem) -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-amber-300 shadow-md w-full max-w-full">
+    <!-- Main Header Sticky -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-amber-300 shadow-md w-full max-w-full overflow-x-clip">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20 sm:h-24 gap-3 sm:gap-6">
+            <div class="flex items-center justify-between h-20 sm:h-24 gap-2 sm:gap-4">
                 
                 <!-- Official Brand Logo -->
-                <a href="#" class="flex items-center gap-2.5 sm:gap-3.5 shrink-0 group">
-                    <div class="relative w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full bg-amber-50 border-2 border-amber-500 p-0.5 shadow-md group-hover:scale-105 transition-transform overflow-hidden shrink-0">
+                <a href="#" class="flex items-center gap-2 sm:gap-3 shrink min-w-0 group">
+                    <div class="relative w-12 h-12 xs:w-14 xs:h-14 sm:w-18 sm:h-18 lg:w-20 lg:h-20 rounded-full bg-amber-50 border-2 border-amber-500 p-0.5 shadow-md group-hover:scale-105 transition-transform overflow-hidden shrink-0">
                         <!-- Imagem física no computador -->
                         <img src="logomarca.jpg" 
                              alt="" 
@@ -154,8 +155,10 @@
                         
                         <!-- Logomarca Vetorizada em SVG Nativo Realista -->
                         <svg class="w-full h-full rounded-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Círculo externo verde -->
                             <circle cx="100" cy="92" r="86" fill="#FFFDF0" stroke="#14532D" stroke-width="6"/>
                             
+                            <!-- Texto do Arco Superior -->
                             <path id="headerLogoTextPath" d="M 26 92 A 74 74 0 0 1 174 92" fill="none"/>
                             <text font-family="'Outfit', Arial, sans-serif" font-weight="900" font-size="14" fill="#14532D" letter-spacing="0.6">
                                 <textPath href="#headerLogoTextPath" startOffset="50%" text-anchor="middle">APICULTURA SILVESTRE</textPath>
@@ -227,48 +230,57 @@
                                 <ellipse cx="7" cy="-8" rx="5" ry="8" fill="#E0F2FE" stroke="#14532D" stroke-width="1" transform="rotate(30 7 -8)"/>
                             </g>
 
-                            <!-- Texto MEL -->
+                            <!-- Texto MEL em Vermelho Carmesim -->
                             <text x="100" y="138" font-family="Georgia, 'Times New Roman', serif" font-weight="900" font-size="26" fill="#9F1239" text-anchor="middle">MEL</text>
                             
-                            <!-- Texto Cursivo Desde 2002 -->
+                            <!-- Texto Cursivo Desde 2002 em Verde Floresta -->
                             <text x="100" y="166" font-family="'Caveat', cursive, sans-serif" font-weight="700" font-size="18" fill="#14532D" text-anchor="middle">Desde 2002</text>
                         </svg>
                     </div>
                     
-                    <!-- Textos do Nome da Empresa SEM NENHUM TRUNCATE -->
-                    <div class="flex flex-col justify-center shrink-0">
-                        <div class="flex items-center gap-1.5 flex-nowrap">
-                            <span class="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-black text-forest-900 tracking-tight leading-none uppercase font-heading whitespace-nowrap">
+                    <div class="flex flex-col justify-center min-w-0">
+                        <div class="flex items-center gap-1.5 flex-wrap">
+                            <span class="text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-forest-900 tracking-tight leading-none uppercase font-heading truncate">
                                 APICULTURA <span class="text-amber-600">SILVESTRE</span>
                             </span>
-                            <span class="hidden md:inline-block px-2 py-0.5 rounded bg-forest-900 text-amber-300 text-[9px] sm:text-[10px] font-black uppercase tracking-wider shrink-0 whitespace-nowrap">
+                            <span class="hidden md:inline-block px-2 py-0.5 rounded bg-forest-900 text-amber-300 text-[9px] sm:text-[10px] font-black uppercase tracking-wider shrink-0">
                                 Desde 2002
                             </span>
                         </div>
-                        <span class="font-handwriting text-amber-900 font-bold text-xs sm:text-sm lg:text-base leading-snug mt-0.5 whitespace-nowrap">
+                        <span class="font-handwriting text-amber-900 font-bold text-xs sm:text-sm lg:text-base leading-snug mt-0.5 truncate">
                             Presente nos momentos mais doces da sua vida ♡
                         </span>
-                        <span class="text-[9px] sm:text-[10px] font-extrabold text-emerald-800 uppercase tracking-wider block whitespace-nowrap">
+                        <span class="text-[9px] sm:text-[10px] font-extrabold text-emerald-800 uppercase tracking-wider block truncate">
                             Vilhena / RO • Reg. S.I.F. Nº 2710
                         </span>
                     </div>
                 </a>
 
-                <!-- Desktop Navigation Links (Transição suave em telas de 1280px ou mais para evitar aperto) -->
-                <nav class="hidden xl:flex items-center gap-4 2xl:gap-6 text-xs lg:text-sm font-bold text-slate-800 shrink-0">
-                    <a href="#inicio" class="hover:text-amber-600 transition-colors whitespace-nowrap">Início</a>
-                    <a href="#quem-somos" class="hover:text-amber-600 transition-colors whitespace-nowrap">Quem Somos</a>
-                    <a href="#diferenciais" class="hover:text-amber-600 transition-colors whitespace-nowrap">Diferenciais</a>
-                    <a href="#tabela-valores" class="hover:text-amber-600 transition-colors text-forest-900 font-extrabold flex items-center gap-1 whitespace-nowrap">
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden xl:flex items-center gap-5 text-xs lg:text-sm font-bold text-slate-800 shrink-0">
+                    <a href="#inicio" class="hover:text-amber-600 transition-colors">Início</a>
+                    <a href="#quem-somos" class="hover:text-amber-600 transition-colors">Quem Somos</a>
+                    <a href="#diferenciais" class="hover:text-amber-600 transition-colors">Diferenciais</a>
+                    <a href="#tabela-valores" class="hover:text-amber-600 transition-colors text-forest-900 font-extrabold flex items-center gap-1">
                         <i class="fa-solid fa-tags text-amber-500"></i> Proposta Comercial
                     </a>
-                    <a href="#condicoes" class="hover:text-amber-600 transition-colors whitespace-nowrap">Condições</a>
-                    <a href="#envio-nacional" class="hover:text-amber-600 transition-colors text-emerald-800 font-extrabold flex items-center gap-1 bg-emerald-50 px-2 py-1 rounded-lg border border-emerald-300 whitespace-nowrap">
+                    <a href="#condicoes" class="hover:text-amber-600 transition-colors">Condições</a>
+                    <a href="#envio-nacional" class="hover:text-amber-600 transition-colors text-emerald-800 font-extrabold flex items-center gap-1 bg-emerald-50 px-2 py-1 rounded-lg border border-emerald-300">
                         <i class="fa-solid fa-truck-fast text-emerald-600"></i> Envio Nacional
                     </a>
-                    <a href="#catalogo" class="hover:text-amber-600 transition-colors whitespace-nowrap">Produtos</a>
-                    <a href="#contato" class="hover:text-amber-600 transition-colors whitespace-nowrap">Contato</a>
+                    <a href="#catalogo" class="hover:text-amber-600 transition-colors">Produtos</a>
+                    <a href="#contato" class="hover:text-amber-600 transition-colors">Contato</a>
                 </nav>
+
+                <!-- Header CTA Button - Visível apenas de sm a lg e xl em diante para evitar estouro em tablets -->
+                <div class="hidden sm:flex md:hidden xl:flex items-center gap-2 shrink-0">
+                    <a href="https://wa.me/5569984577452?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Apicultura%20Silvestre%20e%20gostaria%20de%20fazer%20um%20pedido." 
+                       target="_blank"
+                       class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-[11px] sm:text-xs uppercase tracking-wide shadow-md hover:scale-105 transition-all border border-emerald-500 whitespace-nowrap">
+                        <i class="fa-brands fa-whatsapp text-sm sm:text-base"></i>
+                        <span>Pedido no WhatsApp</span>
+                    </a>
+                </div>
 
                 <!-- Mobile Menu Button -->
                 <button id="menu-toggle" class="xl:hidden text-slate-800 hover:text-amber-600 p-2 rounded-xl bg-amber-100 border border-amber-300 shrink-0" aria-label="Abrir Menu">
@@ -293,7 +305,7 @@
         </div>
     </header>
 
-    <!-- HERO SECTION (Botão do WhatsApp posicionado em perfeito destaque logo abaixo) -->
+    <!-- HERO SECTION -->
     <section id="inicio" class="relative bg-honey-pattern py-8 sm:py-12 md:py-14 border-b border-amber-300/80 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
@@ -302,7 +314,7 @@
                 <div class="lg:col-span-7 space-y-4 sm:space-y-5 text-center lg:text-left">
                     <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-amber-400 text-slate-950 font-bold text-xs shadow-sm border border-amber-500 max-w-full">
                         <span class="w-2 h-2 rounded-full bg-forest-900 animate-pulse shrink-0"></span>
-                        <span class="font-handwriting text-base sm:text-lg text-forest-950 leading-none">Presente nos momentos mais doces da sua vida ♡</span>
+                        <span class="font-handwriting text-base sm:text-lg text-forest-950 leading-none truncate">Presente nos momentos mais doces da sua vida ♡</span>
                     </div>
 
                     <!-- Main Hero Banner - Amarelo Mercado Pago vibrante -->
@@ -360,7 +372,7 @@
                         </div>
                     </div>
 
-                    <!-- Call To Action Buttons (Ação principal para o WhatsApp perfeitamente posicionada) -->
+                    <!-- Call To Action Buttons -->
                     <div class="pt-2 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 justify-center lg:justify-start">
                         <a href="https://wa.me/5569984577452?text=Ol%C3%A1!%20Gostaria%20de%20receber%20a%20tabela%20comercial%20e%20fazer%20um%20pedido%20de%20mel." 
                            target="_blank" 
@@ -478,7 +490,7 @@
                     </div>
                 </div>
 
-                <!-- Galeria da Sede Própria (api2.jpeg para a fachada do prédio) -->
+                <!-- Galeria da Sede (com api2.jpeg para o prédio) -->
                 <div class="lg:col-span-6 grid grid-cols-2 gap-3 sm:gap-4">
                     <div class="rounded-2xl overflow-hidden shadow-lg border-2 border-amber-300 relative group h-40 sm:h-52">
                         <img src="api2.jpeg" alt="Sede da Apicultura Silvestre em Vilhena RO" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -612,7 +624,7 @@
                 </p>
             </div>
 
-            <!-- Tabela com Rolagem Suave em Telas Menores -->
+            <!-- Tabela com Rolagem Suave por Toque em Dispositivos Móveis -->
             <div class="w-full max-w-full overflow-x-auto touch-scroll rounded-2xl border-2 border-amber-300 shadow-xl bg-white mb-4 sm:mb-6">
                 <table class="w-full text-left border-collapse min-w-[650px]">
                     <thead>
